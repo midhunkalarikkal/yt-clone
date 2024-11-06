@@ -24,8 +24,12 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import OutlinedFlagOutlinedIcon from "@mui/icons-material/OutlinedFlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+
+  const isMenuOpen = useSelector((store) => store.state.isMenuOpen);
+  if(!isMenuOpen) return null;
   return (
     <div className="w-[14%] py-2 px-2 h-screen overflow-y-scroll">
       <div className="" style={{ borderBottom: "1px solid #f0f0f0" }}>

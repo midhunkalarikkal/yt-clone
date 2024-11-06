@@ -4,12 +4,20 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { useDispatch } from 'react-redux';
+import { toggleSideMenu } from '../utils/stateSlice';
 
 const Header = () => {
+  const dispatch = useDispatch()
+
+  const handleSideBar = () => {
+    dispatch(toggleSideMenu())
+  }
+  
   return (
     <div className='flex w-full h-14 py-4 px-4'>
         <div className='flex w-3/12 items-center justify-start'>
-            <MenuIcon fontSize='large'className='cursor-pointer'/>
+            <MenuIcon fontSize='large'className='cursor-pointer'onClick={handleSideBar}/>
             <img className='w-8 ml-6 cursor-pointer' src='/icons/ytlogo.png' alt='ytlogo' />
             <h1 className='text-2xl font-bold cursor-pointer'>Youtube<sup className='text-xs font-normal opacity-60'>IN</sup></h1>
         </div>

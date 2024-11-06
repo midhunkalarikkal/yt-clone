@@ -1,13 +1,17 @@
-import './App.css';
-import Body from './components/Body';
-import Header from './components/Header';
+import { Provider } from "react-redux";
+import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
+import appStore from "./utils/appStore";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Body />
-    </div>
+    <Provider store={appStore}>
+      <div>
+        <Header />
+        <Body />
+      </div>
+    </Provider>
   );
 }
 
