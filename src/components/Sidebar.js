@@ -1,49 +1,54 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
-import VideoStableOutlinedIcon from "@mui/icons-material/VideoStableOutlined";
-import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
-import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
-import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
-import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
-import SmartDisplayOutlinedIcon from "@mui/icons-material/SmartDisplayOutlined";
-import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import DeblurRoundedIcon from "@mui/icons-material/DeblurRounded";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
-import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
-import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
+import DeblurRoundedIcon from "@mui/icons-material/DeblurRounded";
 import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
-import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
-import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
-import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
-import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
+import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import PodcastsOutlinedIcon from "@mui/icons-material/PodcastsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import OutlinedFlagOutlinedIcon from "@mui/icons-material/OutlinedFlagOutlined";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
+import NewspaperOutlinedIcon from "@mui/icons-material/NewspaperOutlined";
+import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
+import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
+import WatchLaterOutlinedIcon from "@mui/icons-material/WatchLaterOutlined";
+import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
+import VideoStableOutlinedIcon from "@mui/icons-material/VideoStableOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import OutlinedFlagOutlinedIcon from "@mui/icons-material/OutlinedFlagOutlined";
 import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
-import { useSelector } from "react-redux";
+import PlaylistPlayOutlinedIcon from "@mui/icons-material/PlaylistPlayOutlined";
+import SmartDisplayOutlinedIcon from "@mui/icons-material/SmartDisplayOutlined";
+import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined";
+import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
+import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
+import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 
 const Sidebar = () => {
 
   const isMenuOpen = useSelector((store) => store.state.isMenuOpen);
-  if(!isMenuOpen) return null;
+
   return (
-    <div className="w-[14%] py-2 px-2 h-screen overflow-y-scroll">
+    <div className={`w-[14%] py-2 px-2 h-screen overflow-y-scroll fixed top-14 bg-white ${
+      isMenuOpen ? 'w-[14%]' : 'w-0'
+    } transition-all duration-300`}>
       <div className="" style={{ borderBottom: "1px solid #f0f0f0" }}>
         <ul className="">
+          <Link to={"/"}>
           <li className="custom-list-item">
             <HomeIcon fontSize="medium" />
             <span className="ml-4">Home</span>
           </li>
+          </Link>
           <li className="custom-list-item">
-            <VideoStableOutlinedIcon fontSize="medium" /> <span>Shorts</span>
+            <VideoStableOutlinedIcon fontSize="medium" /> <span className="ml-4">Shorts</span>
           </li>
           <li className="custom-list-item">
             <SubscriptionsOutlinedIcon fontSize="medium" />{" "}
-            <span>Subscriptions</span>
+            <span className="ml-4">Subscriptions</span>
           </li>
         </ul>
       </div>
@@ -197,7 +202,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <div className="text-[#606060] p-4">
+      <div className="text-[#606060] p-4 pb-16">
         <p className="text-sm font-bold">About Press Copyright Contact us Creator Advertise Developers</p>
         <p className="text-sm font-bold py-2">Terms Privacy Policy & Safety How YouTube works Test new features</p>
         <p className="text-xs py-2">© 2024 Google LLC</p>

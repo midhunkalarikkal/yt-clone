@@ -1,6 +1,7 @@
 import React from "react";
 
 const ButtonList = () => {
+  
   const buttonNames = [
     "All",
     "Live",
@@ -22,6 +23,7 @@ const ButtonList = () => {
     "Travel",
     "Car",
   ];
+
   return (
     <div className="p-4 overflow-x-scroll whitespace-nowrap no-scrollbar">
       {buttonNames.map((button, index) => (
