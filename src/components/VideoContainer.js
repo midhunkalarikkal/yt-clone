@@ -9,7 +9,6 @@ const VideoContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_POPULARVIDEOS_API);
     const json = await data.json();
-    console.log("json : ", json.items);
     setVideos(json.items);
   };
 

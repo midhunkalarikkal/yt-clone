@@ -33,10 +33,10 @@ const Sidebar = () => {
 
   return (
     <div className={`w-[14%] py-2 px-2 h-screen overflow-y-scroll fixed top-14 bg-white ${
-      isMenuOpen ? 'w-[14%]' : 'w-0'
+      isMenuOpen ? 'w-[14%]' : 'w-0 no-scrollbar'
     } transition-all duration-300`}>
-      <div className="" style={{ borderBottom: "1px solid #f0f0f0" }}>
-        <ul className="">
+      <div style={{ borderBottom: "1px solid #f0f0f0" }}>
+        <ul>
           <Link to={"/"}>
           <li className="custom-list-item">
             <HomeIcon fontSize="medium" />
