@@ -1,5 +1,7 @@
 import React from "react";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import moment from "moment";
+import numeral from "numeral";
 
 const VideoCard = ({ info }) => {
   if (!info) return null;
@@ -16,6 +18,8 @@ const VideoCard = ({ info }) => {
   } = snippet;
   const { viewCount } = statistics;
   const trimmedTitle = title.length > 55 ? title.slice(0, 55) + '...' : title;
+  const date = moment(publishedAt).fromNow();
+  const vc = numeral(viewCount).format('0.0a');
 
   return (
     <div className="flex flex-col overflow-hidden cursor-pointer">
@@ -30,8 +34,8 @@ const VideoCard = ({ info }) => {
 
         <div className="flex-grow ml-3 overflow-hidden">
           <h1 className="text-md font-medium line-clamp-2">{trimmedTitle}</h1>
-          <p className="text-[#797979] text-xs font-semibold mt-1">{channelTitle}</p>
-          <p className="text-[#797979] text-xs font-semibold">{viewCount} views • {publishedAt}</p>
+          <p className="text-[#797979] text-sm font-semibold">{channelTitle}</p>
+          <p className="text-[#797979] text-sm font-semibold">{vc} views • {date}</p>
         </div>
 
         <div className="flex-shrink-0 ml-auto">

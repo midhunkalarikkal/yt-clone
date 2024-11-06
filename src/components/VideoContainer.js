@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CHANNEL_DETAILS_API, YOUTUBE_POPULARVIDEOS_API } from '../utils/constants'
+import { YOUTUBE_POPULARVIDEOS_API } from '../utils/constants'
 import VideoCard from './VideoCard';
 
 const VideoContainer = () => {
@@ -21,8 +21,8 @@ const VideoContainer = () => {
   return (
     <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 p-4'>
       {videos.length > 0 ? (
-        videos.map((video, index) => (
-          <VideoCard key={index} info={video} />
+        videos.map((video) => (
+          <VideoCard key={video.id} info={video} />
         ))
       ) : (
         <h1>Loading...</h1>
