@@ -1,7 +1,9 @@
 const GOOGLE_API_KEY = "AIzaSyAeXtix3AC_GXfQVylvtIaCmfAo-PuI11w";
 
-export const CHANNEL_DETAILS_API =
-"https://www.googleapis.com/youtube/v3/channels?part=snippet&id=UCSo19KhHogXxu3sFsOpqrcQ&key=" +
+export const CHANNEL_DETAILS_API_PRE =
+"https://www.googleapis.com/youtube/v3/channels?part=snippet&id="
+
+export const CHANNEL_DETAILS_API_POST = "&key=" +
 GOOGLE_API_KEY;
 
 export const YOUTUBE_POPULARVIDEOS_API =
