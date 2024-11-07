@@ -18,7 +18,7 @@ const stateSlice = createSlice({
     },
     closeSmallSidebar: (state) => {
       state.isSmallSidebarOpen = false;
-    }
+    },
   },
 });
 

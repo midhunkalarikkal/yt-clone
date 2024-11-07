@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeSidebar, closeSmallSidebar } from "../utils/stateSlice";
 import { useSearchParams } from "react-router-dom";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import CommentsContainer from "./CommentsContainer";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import GetAppOutlinedIcon from "@mui/icons-material/GetAppOutlined";
+import SuggestionVideosContainer from "./SuggestionVideosContainer";
+import { closeSidebar, closeSmallSidebar } from "../utils/stateSlice";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
-import SuggestionContainer from "./SuggestionContainer";
-import CommentsContainer from "./CommentsContainer";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const WatchPage = () => {
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           ></iframe>
         </div>
@@ -98,10 +98,25 @@ const WatchPage = () => {
             students. Namaste React Website Link -
           </p>
         </div>
-
-        <CommentsContainer />
+        <div className="p-4">
+          <h3>Count of comments</h3>
+          <div className="flex w-full mt-6">
+            <img
+              className="w-12 h-12 rounded-full mr-4"
+              src="https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"
+              alt="Your_profile_image"
+            />
+            <input
+              className="mx-4 w-full"
+              type="text"
+              placeholder="Add a comment"
+              style={{ border: 0, borderBottom: "1px solid black" }}
+            />
+          </div>
+          <CommentsContainer />
+        </div>
       </div>
-     <SuggestionContainer />
+      <SuggestionVideosContainer />
     </div>
   );
 };
