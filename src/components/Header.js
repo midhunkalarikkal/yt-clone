@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import MicIcon from '@mui/icons-material/Mic';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { toggleSideMenu } from '../utils/stateSlice';
+import { toggleSidebar } from '../utils/stateSlice';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
@@ -11,7 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleSideBar = () => {
-    dispatch(toggleSideMenu());
+    dispatch(toggleSidebar());
   }
   
   return (

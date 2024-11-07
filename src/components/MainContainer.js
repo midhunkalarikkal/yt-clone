@@ -1,10 +1,16 @@
-import React from 'react';
 import ButtonList from './ButtonList';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
 import VideoContainer from './VideoContainer';
+import { useDispatch, useSelector } from 'react-redux';
+import { openSmallSidebar } from '../utils/stateSlice';
 
 const MainContainer = () => {
-  const sideMenuOpen = useSelector((store) => store.state.isMenuOpen);
+  const dispatch = useDispatch()
+  const sideMenuOpen = useSelector((store) => store.state.isSidebarOpen);
+
+  useEffect(() => {
+    dispatch(openSmallSidebar());
+  },[])
 
   return (
     <div className={`px-4 overflow-y-auto mt-14 h-screen ${sideMenuOpen ? "w-[86%] ml-[14%]" : "w-[95%] ml-[5%]"}`}>

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeMenu } from "../utils/stateSlice";
+import { closeSidebar, closeSmallSidebar } from "../utils/stateSlice";
 import { useSearchParams } from "react-router-dom";
 
 const WatchPage = () => {
@@ -8,7 +8,8 @@ const WatchPage = () => {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    dispatch(closeMenu());
+    dispatch(closeSidebar());
+    dispatch(closeSmallSidebar());
   }, []);
 
   return (

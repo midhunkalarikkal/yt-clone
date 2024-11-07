@@ -3,17 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 const stateSlice = createSlice({
   name: "state",
   initialState: {
-    isMenuOpen: true,
+    isSidebarOpen: true,
+    isSmallSidebarOpen: true,
   },
   reducers: {
-    toggleSideMenu: (state) => {
-      state.isMenuOpen = !state.isMenuOpen;
+    toggleSidebar: (state) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
     },
-    closeMenu: (state) => {
-      state.isMenuOpen = false;
+    closeSidebar: (state) => {
+      state.isSidebarOpen = false;
     },
+    openSmallSidebar: (state) => {
+      state.isSmallSidebarOpen = true;
+    },
+    closeSmallSidebar: (state) => {
+      state.isSmallSidebarOpen = false;
+    }
   },
 });
 
-export const { toggleSideMenu, closeMenu } = stateSlice.actions;
+export const { toggleSidebar, closeSidebar, openSmallSidebar, closeSmallSidebar } = stateSlice.actions;
 export default stateSlice.reducer;
