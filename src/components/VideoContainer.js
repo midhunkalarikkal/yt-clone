@@ -1,34 +1,21 @@
 import VideoCard from "./VideoCard";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { YOUTUBE_POPULARVIDEOS_API } from "../utils/constants";
+import { useSelector } from "react-redux";
 
-const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
-
-  const getVideos = async () => {
-    const data = await fetch(YOUTUBE_POPULARVIDEOS_API);
-    const json = await data.json();
-    setVideos(json.items);
-  };
-
-  useEffect(() => {
-    getVideos();
-  }, []);
+const VideoContainer = memo(() => {
+  const videos = useSelector((store) => store.videos.items);
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 p-4">
-      {videos.length > 0 ? (
+      {videos &&
         videos.map((video) => (
-          <Link key={video.id} to={"/watch?v="+video.id}>
+          <Link key={video.id} to={"/watch?v=" + video.id}>
             <VideoCard info={video} />
           </Link>
-        ))
-      ) : (
-        <h1>Loading...</h1>
-      )}
+        ))}
     </div>
   );
-};
+});
 
 export default VideoContainer;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import moment from "moment";
 import numeral from "numeral";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -7,7 +7,7 @@ import {
   CHANNEL_DETAILS_API_PRE,
 } from "../utils/constants";
 
-const VideoCard = ({ info }) => {
+const VideoCard = memo(({ info }) => {
   const [channelProfile, setChannelProfile] = useState(null);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const VideoCard = ({ info }) => {
 
   return (
     <div className="flex flex-col overflow-hidden cursor-pointer">
-      <div className="h-[180px]">
+      <div className="h-[200px]">
         <img
           className="rounded-lg w-full h-full object-cover"
           src={thumbnailUrl}
@@ -49,7 +49,7 @@ const VideoCard = ({ info }) => {
         />
       </div>
 
-      <div className="flex p-4">
+      <div className="flex py-4">
         <div className="flex-shrink-0 w-10 h-10">
           <img
             className="rounded-full w-full h-full"
@@ -72,6 +72,6 @@ const VideoCard = ({ info }) => {
       </div>
     </div>
   );
-};
+});
 
 export default VideoCard;
