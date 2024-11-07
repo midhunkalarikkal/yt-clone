@@ -32,7 +32,7 @@ const Sidebar = () => {
   const isSidebarOpen = useSelector((store) => store.state.isSidebarOpen);
 
   return (
-    <div className={`w-[14%] py-2 px-2 h-screen overflow-y-scroll fixed top-14 bg-white ${
+    <div className={`py-2 px-2 h-screen overflow-y-scroll fixed top-14 bg-white ${
       isSidebarOpen ? 'w-[14%]' : 'w-0 no-scrollbar'
     } transition-all duration-300`}>
       <div style={{ borderBottom: "1px solid #f0f0f0" }}>
