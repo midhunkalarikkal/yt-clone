@@ -6,8 +6,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import { toggleSidebar } from '../utils/stateSlice';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import useGetPopularVideos from '../utils/hooks/useGetPopularVideos';
 
 const Header = () => {
+  useGetPopularVideos();
   const dispatch = useDispatch();
 
   const handleSideBar = () => {
