@@ -11,12 +11,15 @@ import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
 import VideoDescription from "./VideoDescription";
+import ChannelDetailSmall from "./ChannelDetailSmall";
+import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-
+  
   const videoId = searchParams.get("v");
+  const channelId = searchParams.get("ch");
 
   useEffect(() => {
     dispatch(closeSidebar());
@@ -45,21 +48,7 @@ const WatchPage = () => {
           <h3 className="text-xl font-semibold mb-2">Video Title</h3>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <img
-                className="w-12 h-12 rounded-full mr-4"
-                src="https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"
-                alt="Your_profile_image"
-              />
-              <div>
-                <h4 className="text-lg font-medium">Channel Name</h4>
-                <p className="text-sm text-gray-500">Subscriber count</p>
-              </div>
-
-              <button className="ml-4 px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600 transition">
-                Subscribe
-              </button>
-            </div>
+           <ChannelDetailSmall id={channelId}/>
 
             <div className="flex items-center gap-3">
               <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
@@ -89,7 +78,7 @@ const WatchPage = () => {
           <div className="flex w-full mt-6">
             <img
               className="w-12 h-12 rounded-full mr-4"
-              src="https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"
+              src={DEFAULT_PROFILE_IMG}
               alt="Your_profile_image"
             />
             <input
