@@ -29,9 +29,9 @@ const Header = () => {
           <button className='w-[40px] ml-2 h-10 bg-[#f0f0f0] rounded-full'><MicIcon /></button>
         </div>
         <div className='flex w-3/12 items-center justify-end'>
-          <VideoCallIcon fontSize='large' className='mr-6'/>
-          <NotificationsNoneIcon fontSize='large' className='mr-6'/>
-          <img className='w-8 h-8' src='/icons/userProfile.png' alt='userProfile' />
+          <VideoCallIcon fontSize='large' className='mr-6 cursor-pointer'/>
+          <NotificationsNoneIcon fontSize='large' className='mr-6 cursor-pointer'/>
+          <img className='w-8 h-8 cursor-pointer' src='https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000' alt='userProfile' />
         </div>
     </div>
   )
