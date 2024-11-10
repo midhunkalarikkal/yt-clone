@@ -13,6 +13,7 @@ import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
 import VideoDescription from "./VideoDescription";
 import ChannelDetailSmall from "./ChannelDetailSmall";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,8 @@ const WatchPage = () => {
   
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");
+
+  useGetCommentThreads(videoId)
 
   useEffect(() => {
     dispatch(closeSidebar());
@@ -88,7 +91,9 @@ const WatchPage = () => {
               style={{ border: 0, borderBottom: "1px solid black" }}
             />
           </div>
-          <CommentsContainer videoId={videoId}/>
+          
+            <CommentsContainer videoId={videoId}/>
+          
         </div>
       </div>
       <SuggestionVideosContainer />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { CHANNEL_DETAILS_API, GAK } from '../constants';
 
 const useGetChannelData = (channelId) => {
     const [channelData, setChannelData] = useState(null);
@@ -11,7 +12,7 @@ const useGetChannelData = (channelId) => {
         const fetchChannelData = async () => {
           try {
             const response = await fetch(
-                "https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id="+channelId+"&key=AIzaSyAeXtix3AC_GXfQVylvtIaCmfAo-PuI11w"
+                CHANNEL_DETAILS_API+channelId+"&key="+GAK
             );
             const data = await response.json();
             setChannelData(data.items[0]);

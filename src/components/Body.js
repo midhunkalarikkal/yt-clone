@@ -1,7 +1,7 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "./SideBars/Sidebar";
 import { Outlet } from "react-router-dom";
-import SmallSideBar from "./SmallSideBar";
+import SmallSideBar from "./SideBars/SmallSideBar";
 
 const Body = () => {
   return (
