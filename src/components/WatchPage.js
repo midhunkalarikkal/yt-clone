@@ -10,10 +10,13 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
+import VideoDescription from "./VideoDescription";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+
+  const videoId = searchParams.get("v");
 
   useEffect(() => {
     dispatch(closeSidebar());
@@ -22,7 +25,7 @@ const WatchPage = () => {
 
   return (
     <div className="flex px-4 pt-20 w-full ">
-      <div className="w-[70%] overflow-hidden rounded-lg overflow-y-scroll no-scrollbar">
+      <div className="w-[70%] overflow-hidden overflow-y-scroll no-scrollbar">
         <div>
           <iframe
             className="w-full h-[600px] lg:rounded-lg"
@@ -80,24 +83,7 @@ const WatchPage = () => {
             </div>
           </div>
         </div>
-        <div className="p-4  mr-4 bg-[#f0f0f0]">
-          <p>Views</p>
-          <p>
-            Use coupon code : CODE72 and register now by link below. Only valid
-            for first 500 students. Namaste React Website Link -
-            https://namastedev.com/learn/namaste-... Namaste React web series
-            will take you from Zero to Hero in React. After watching this
-            series, you will be able to develop production-ready react frontend
-            web applications from scratch. Use coupon code : CODE72 and register
-            now by link below. Only valid for first 500 students. Namaste React
-            Website Link - https://namastedev.com/learn/namaste-... Namaste
-            React web series will take you from Zero to Hero in React. After
-            watching this series, you will be able to develop production-ready
-            react frontend web applications from scratch. Use coupon code :
-            CODE72 and register now by link below. Only valid for first 500
-            students. Namaste React Website Link -
-          </p>
-        </div>
+        <VideoDescription videoId={videoId}/>
         <div className="p-4">
           <h3>Count of comments</h3>
           <div className="flex w-full mt-6">
@@ -113,7 +99,7 @@ const WatchPage = () => {
               style={{ border: 0, borderBottom: "1px solid black" }}
             />
           </div>
-          <CommentsContainer />
+          <CommentsContainer videoId={videoId}/>
         </div>
       </div>
       <SuggestionVideosContainer />

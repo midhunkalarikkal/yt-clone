@@ -2,7 +2,8 @@ import React from "react";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
-const CommentsContainer = () => {
+const CommentsContainer = ({videoId}) => {
+
   return (
     <div className="w-full flex items-start mt-6 rounded-lg">
       <img
