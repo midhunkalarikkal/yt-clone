@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MicIcon from "@mui/icons-material/Mic";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -8,28 +8,38 @@ import VideoCallIcon from "@mui/icons-material/VideoCall";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import useGetPopularVideos from "../utils/hooks/useGetPopularVideos";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const dispatch = useDispatch();
+  const searchCache = useSelector((store) => store.search);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getSearchResults();
-    },1000);
+      if(searchCache[searchQuery]){
+        setSuggestions(searchCache[searchQuery])
+      }else{
+        getSearchResults();
+      }
+    }, 200);
 
-    return (() => {
+    return () => {
       clearTimeout(timer);
-    })
-  },[searchQuery]);
+    };
+  }, [searchQuery]);
 
   const getSearchResults = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API+searchQuery)
+    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
     const json = await data.json();
-    console.log("json : ",json);
-  }
+    setSuggestions(json[1]);
+    dispatch(cacheResults({
+      [searchQuery] : json[1]
+    }))
+  };
 
   useGetPopularVideos();
-  const dispatch = useDispatch();
 
   const handleSideBar = () => {
     dispatch(toggleSidebar());
@@ -52,7 +62,7 @@ const Header = () => {
           Youtube<sup className="text-xs font-normal opacity-60">IN</sup>
         </h1>
       </div>
-      <div className="flex w-6/12 items-center justify-center">
+      <div className="flex w-6/12 items-center justify-center relative">
         <input
           className="w-7/12 h-10 rounded-l-full px-3"
           style={{ border: "1px solid gray", outline: "none" }}
@@ -74,6 +84,15 @@ const Header = () => {
         <button className="w-[40px] ml-2 h-10 bg-[#f0f0f0] rounded-full">
           <MicIcon />
         </button>
+        {suggestions.length > 0 && 
+        <div className="absolute top-8 left-[124px] w-[57%] bg-white border border-gray-300 rounded-lg shadow-lg z-10">
+          <ul className="py-2 px-4">
+            {suggestions.map((item) => (
+              <li key={item} className="p-1 hover:bg-[#f0f0f0] cursor-default"><SearchIcon /> {item}</li>
+            ))}
+          </ul>
+        </div>
+        }
       </div>
       <div className="flex w-3/12 items-center justify-end">
         <VideoCallIcon fontSize="large" className="mr-6 cursor-pointer" />
