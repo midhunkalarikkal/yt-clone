@@ -24,7 +24,7 @@ const VideoDescription = ({ videoId }) => {
   const date = moment(publishedAt).fromNow();
 
   return (
-    <div className="p-4  mr-4 bg-[#f0f0f0]">
+    <div className="p-4  mr-4 bg-[#f2f2f2]">
       <p className="text-md font-semibold">
         {views} views {date}
       </p>

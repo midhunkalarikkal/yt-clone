@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
@@ -13,16 +13,18 @@ import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
 import VideoDescription from "./VideoDescription";
 import ChannelDetailSmall from "./ChannelDetailSmall";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
-import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
 
 const WatchPage = () => {
+  const [ commentsCount, setCommentsCount ] = useState(null);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");
 
-  useGetCommentThreads(videoId)
+  const handleCommentCount = (data) => {
+    setCommentsCount(data)
+  }
 
   useEffect(() => {
     dispatch(closeSidebar());
@@ -77,8 +79,8 @@ const WatchPage = () => {
         </div>
         <VideoDescription videoId={videoId}/>
         <div className="p-4">
-          <h3>Count of comments</h3>
-          <div className="flex w-full mt-6">
+          <h3>{commentsCount} comments</h3>
+          <div className="flex w-full mt-6 mb-10">
             <img
               className="w-12 h-12 rounded-full mr-4"
               src={DEFAULT_PROFILE_IMG}
@@ -88,10 +90,10 @@ const WatchPage = () => {
               className="mx-4 w-full"
               type="text"
               placeholder="Add a comment"
-              style={{ border: 0, borderBottom: "1px solid black" }}
+              style={{ border: 0, borderBottom: "1px solid black", borderColor: "#f2f2f2", outline:"none" }}
             />
           </div>
-            <CommentsContainer videoId={videoId}/>
+            <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount}/>
         </div>
       </div>
       <SuggestionVideosContainer />

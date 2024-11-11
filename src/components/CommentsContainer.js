@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect} from "react";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 
-const CommentsContainer = ({ videoId }) => {
+const CommentsContainer = ({ videoId, onCommentCountUpdate }) => {
   const { comments, loading, error } = useGetCommentThreads(videoId);
+
+  useEffect(() => {
+    if(comments){
+      onCommentCountUpdate(comments?.length)
+    }
+  },[comments, onCommentCountUpdate])
 
   if (loading || error) {
     return (
@@ -33,7 +39,7 @@ const CommentsContainer = ({ videoId }) => {
             className="w-12 h-12 rounded-full mr-4"
             src={comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || DEFAULT_PROFILE_IMG}
             alt=":)"
-            omError={(e) => (e.target.src = DEFAULT_PROFILE_IMG)}
+            onError={(e) => (e.target.src = DEFAULT_PROFILE_IMG)}
           />
           <div>
             <h4 className="text-md font-semibold">
