@@ -13,7 +13,7 @@ const MainContainer = () => {
   },[])
 
   return (
-    <div className={`px-4 overflow-y-auto mt-14 h-screen no-scrollbar ${sideMenuOpen ? "w-[86%] ml-[14%]" : "w-[95%] ml-[5%]"}`}>
+    <div className={`px-4 overflow-y-auto mt-14 ${sideMenuOpen ? "w-[86%] ml-[14%]" : "w-[95%] ml-[5%]"}`}>
         <ButtonList />
         <VideoContainer />
     </div>

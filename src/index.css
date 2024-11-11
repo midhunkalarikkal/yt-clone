@@ -9,3 +9,38 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+
+    @keyframes shimmer {
+      0% {
+        background-position: -100%;
+      }
+      100% {
+        background-position: 100%;
+      }
+    }
+    
+    .shimmer {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    
+    @keyframes breathing {
+      0% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+      }
+      100% {
+        opacity: 0.8;
+        transform: scale(1);
+      }
+    }
+    
+    .animate-pulse {
+      animation: breathing 1.6s ease-in-out infinite;
+    }

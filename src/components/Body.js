@@ -5,7 +5,7 @@ import SmallSideBar from "./SideBars/SmallSideBar";
 
 const Body = () => {
   return (
-    <div className="flex h-screen">
+    <div className="flex">
       <SmallSideBar />
       <Sidebar />
       <Outlet />

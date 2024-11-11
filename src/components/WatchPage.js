@@ -30,8 +30,8 @@ const WatchPage = () => {
   }, []);
 
   return (
-    <div className="flex px-4 pt-20 w-full ">
-      <div className="w-[70%] overflow-hidden overflow-y-scroll no-scrollbar">
+    <div className="flex px-4 mt-14 pt-1 w-full">
+      <div className="w-[70%] overflow-hidden">
         <div>
           <iframe
             className="w-full h-[600px] lg:rounded-lg"
@@ -91,9 +91,7 @@ const WatchPage = () => {
               style={{ border: 0, borderBottom: "1px solid black" }}
             />
           </div>
-          
             <CommentsContainer videoId={videoId}/>
-          
         </div>
       </div>
       <SuggestionVideosContainer />

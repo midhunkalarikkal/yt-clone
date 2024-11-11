@@ -6,7 +6,7 @@ import SuggestionVideoCard from "./SuggestionVideoCard";
 const SuggestionVideosContainer = memo(() => {
   const suggestionVideos = useSelector((store) => store.videos.items);
   return (
-    <div className="w-[30%] px-6 h-screen overflow-y-scroll no-scrollbar">
+    <div className="w-[30%] px-6">
       {suggestionVideos && suggestionVideos.map((video) => (
         <Link key={video.id} to={"/watch?v="+video.id}>
           <SuggestionVideoCard info={video}/>
