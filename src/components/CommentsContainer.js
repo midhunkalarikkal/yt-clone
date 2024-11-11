@@ -1,17 +1,22 @@
-import React, { useEffect} from "react";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import Comment from './Comment';
+import React, { useEffect, useState } from "react";
 import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
 const CommentsContainer = ({ videoId, onCommentCountUpdate }) => {
+  const [showReply, setShowReply] = useState(false);
   const { comments, loading, error } = useGetCommentThreads(videoId);
 
+  const showCommentReply = () => {
+    setShowReply(!showReply);
+  };
+
   useEffect(() => {
-    if(comments){
-      onCommentCountUpdate(comments?.length)
+    if (comments) {
+      onCommentCountUpdate(comments?.length);
     }
-  },[comments, onCommentCountUpdate])
+  }, [comments, onCommentCountUpdate]);
 
   if (loading || error) {
     return (
@@ -30,38 +35,31 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate }) => {
       </div>
     );
   }
-
+  
   return (
     <>
       {comments.map((comment) => (
-        <div key={comment.id} className="w-full flex items-start mt-6">
-          <img
-            className="w-12 h-12 rounded-full mr-4"
-            src={comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl || DEFAULT_PROFILE_IMG}
-            alt=":)"
-            onError={(e) => (e.target.src = DEFAULT_PROFILE_IMG)}
-          />
-          <div>
-            <h4 className="text-md font-semibold">
-              {comment?.snippet?.topLevelComment?.snippet?.authorDisplayName}
-            </h4>
-            <p className="text-gray-700 mt-1 text-sm">
-              {comment?.snippet?.topLevelComment?.snippet?.textDisplay}
-            </p>
-            <div className="flex gap-2 mt-2">
-              <button className="px-4 py-2 ">
-                <ThumbUpOutlinedIcon fontSize="small" />{" "}
-                <span className="text-xs">
-                  {comment?.snippet?.topLevelComment?.snippet?.likeCount}
-                </span>
-              </button>
-              <button className="px-4 py-2 ">
-                <ThumbDownOutlinedIcon fontSize="small" />
-              </button>
-              <button className="px-4 py-2 text-sm font-semibold">Reply</button>
-            </div>
+        <div key={comment.id} className="w-full mt-6">
+          <Comment key={comment.id} comment={comment}/>
+            {comment?.replies?.comments && (
+              <div className="px-4 py-2">
+                <button
+                  className="text-[#065fd4] font-semibold cursor-pointer hover:bg-[#def1ff] px-4 py-1 rounded-full"
+                  onClick={showCommentReply}
+                >
+                  {showReply ? <KeyboardArrowUpOutlinedIcon /> : <KeyboardArrowDownOutlinedIcon />}
+                  {comment?.snippet?.totalReplyCount}
+                  {comment?.snippet?.totalReplyCount === 1
+                    ? " reply"
+                    : " replies"}
+                </button>
+                {showReply &&
+                  comment?.replies?.comments.map((reply) => (
+                    <Comment key={reply.id} reply={reply}/>
+                  ))}
+              </div>
+            )}
           </div>
-        </div>
       ))}
     </>
   );
