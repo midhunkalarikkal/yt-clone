@@ -79,7 +79,7 @@ const WatchPage = () => {
         </div>
         <VideoDescription videoId={videoId}/>
         <div className="p-4">
-          <h3>{commentsCount} comments</h3>
+          <h3 className="font-bold text-xl">{commentsCount} Comments</h3>
           <div className="flex w-full mt-6 mb-10">
             <img
               className="w-12 h-12 rounded-full mr-4"

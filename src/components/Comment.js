@@ -2,6 +2,7 @@ import React from "react";
 import moment from "moment";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
 const Comment = ({ comment, reply }) => {
@@ -58,6 +59,9 @@ const Comment = ({ comment, reply }) => {
             Reply
           </button>
         </div>
+      </div>
+      <div className="ml-auto">
+        <MoreVertOutlinedIcon />
       </div>
     </div>
   );
