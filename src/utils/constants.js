@@ -12,3 +12,5 @@ export const YOUTUBE_POPULARVIDEOS_API =
  export const VIDEO_COMMENT_THRES_API = "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&videoId=";
 
  export const GAK = process.env.REACT_APP_GOOGLE_API_KEY;
+
+ export const YOUTUBE_SEARCH_SUGGESTION_API = "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
