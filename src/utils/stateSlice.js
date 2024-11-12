@@ -5,6 +5,9 @@ const stateSlice = createSlice({
   initialState: {
     isSidebarOpen: true,
     isSmallSidebarOpen: true,
+    isUserSideMenuOpen: false,
+    isUserLoggedIn: false,
+    user: null,
   },
   reducers: {
     toggleSidebar: (state) => {
@@ -13,14 +16,31 @@ const stateSlice = createSlice({
     closeSidebar: (state) => {
       state.isSidebarOpen = false;
     },
+    toggleUserSideMenu: (state) => {
+      state.isUserSideMenuOpen = !state.isUserSideMenuOpen;
+    },
     openSmallSidebar: (state) => {
       state.isSmallSidebarOpen = true;
     },
     closeSmallSidebar: (state) => {
       state.isSmallSidebarOpen = false;
     },
+    updateUserLoggedIn: (state, action) => {
+      state.isUserLoggedIn = action.payload;
+    },
+    setUser: (state, action) => {
+      state.user = action.payload
+    }
   },
 });
 
-export const { toggleSidebar, closeSidebar, openSmallSidebar, closeSmallSidebar } = stateSlice.actions;
+export const {
+  toggleSidebar,
+  closeSidebar,
+  openSmallSidebar,
+  closeSmallSidebar,
+  updateUserLoggedIn,
+  toggleUserSideMenu,
+  setUser
+} = stateSlice.actions;
 export default stateSlice.reducer;

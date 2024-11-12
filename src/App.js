@@ -1,11 +1,15 @@
-import { Provider } from "react-redux";
 import "./App.css";
 import Body from "./components/Body";
-import Header from "./components/Header";
+import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainContainer from "./components/MainContainer";
+import Header from "./components/Header";
 import WatchPage from "./components/WatchPage";
+import { ToastContainer } from "react-toastify";
+import MainContainer from "./components/MainContainer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+
+function App() {
 
 const appRouter = createBrowserRouter([
   {
@@ -24,11 +28,11 @@ const appRouter = createBrowserRouter([
   }
 ])
 
-function App() {
   return (
     <Provider store={appStore}>
       <div>
         <Header />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
         <RouterProvider router={appRouter} />
       </div>
     </Provider>
