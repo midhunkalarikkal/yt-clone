@@ -109,7 +109,6 @@ const Header = () => {
         toast.success("Logged in successfully");
       })
       .catch((error) => {
-        console.log("error : ",error)
         if (error.code === "auth/popup-closed-by-user") {
           toast.error("Login popup closed. Please try again.");
         } else {

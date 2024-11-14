@@ -33,25 +33,21 @@ const WatchPage = () => {
     dispatch(closeSmallSidebar());
   }, []);
 
-   // Handle time click for seeking the video
    const handleTimeClick = (seconds) => {
-    console.log("time clicked: ", seconds);
     if (player) {
-      player.seekTo(seconds, true); // Seek to the timestamp
+      player.seekTo(seconds, true);
     }
   };
 
-  // When the player is ready, set the player instance
   const onPlayerReady = (event) => {
     setPlayer(event.target);
   };
 
-  // YouTube API iframe callback to initialize the player
   window.onYouTubePlayerAPIReady = () => {
     new window.YT.Player(playerRef.current, {
       videoId,
       events: {
-        onReady: onPlayerReady, // When player is ready, call onPlayerReady
+        onReady: onPlayerReady,
       },
     });
   };
