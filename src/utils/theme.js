@@ -23,8 +23,7 @@ export const lightTheme = {
 
 export const darkTheme = {
     mainBg: "#0f0f0f",
-    buttonBg: "#111111",
-    TextOne: "#ffffff",
+    textOne: "#ffffff",
     textTwo: "#878787",
     textThree: "#3da2f9",
     smallText: "#606060",
@@ -39,6 +38,7 @@ export const darkTheme = {
     commentInputBorder: "#3f3f3f",
     commentTime: "#606060",
     commentTimeHover: "#ffffff",
+    buttonOneBg: "#272727",
     replyButtonText: "#065fd4",
     replyButtonBgHover: "#263850",
     border: "#3f3f3f"

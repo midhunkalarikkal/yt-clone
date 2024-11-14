@@ -1,6 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../utils/theme";
+
 
 const ButtonList = () => {
+
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
   
   const buttonNames = [
     "All",
@@ -27,7 +33,7 @@ const ButtonList = () => {
   return (
     <div className="p-4 overflow-x-scroll whitespace-nowrap no-scrollbar">
       {buttonNames.map((button, index) => (
-        <button key={index}className="px-4 py-1 rounded-lg bg-[#f0f0f0] mx-1">{button}</button>
+        <button key={index}className="px-4 py-1 text-sm font-semibold rounded-lg mx-1" style={{ background : theme.buttonOneBg, color: theme.textOne}}>{button}</button>
       ))}
     </div>
   );

@@ -5,12 +5,17 @@ import SmallSideBar from "./SideBars/SmallSideBar";
 import useGetPopularVideos from '../utils/hooks/useGetPopularVideos';
 import { useSelector } from "react-redux";
 import ErrorPage from "./ErrorPage";
+import { darkTheme, lightTheme } from "../utils/theme";
 
 const Body = () => {
-  useGetPopularVideos();
   const limitReached = useSelector((store) => store.state.limitReached);
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
+
+  useGetPopularVideos();
+  
   return (
-    <div className="flex">
+    <div className="flex" style={{ background: theme.mainBg}}>
       <SmallSideBar />
       <Sidebar />
       { limitReached ? (
