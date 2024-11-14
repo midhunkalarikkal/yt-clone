@@ -1,7 +1,8 @@
 import moment from "moment";
 import numeral from "numeral";
-import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import {parseDescription} from '../utils/formaters'
 
 const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const [isExapnd, setIsExpand] = useState(false);
@@ -35,39 +36,32 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
         {views} views {date}
       </p>
       <p className="text-md">
-        {isExapnd ? (
-          <>
-            {description}
-            <span
-              className="font-semibold cursor-pointer"
-              onClick={handleDescription}
-            >
-              {" "}
-              less...
-            </span>
-          </>
-        ) : description.length > 300 ? (
-          <>
-            {description.slice(0, 300)}
-            <span
-              className="font-semibold cursor-pointer"
-              onClick={handleDescription}
-            >
-              {" "}
-              more...
-            </span>
-          </>
+      {description.length > 300 ? (
+          isExapnd ? (
+            <>
+              {parseDescription(description)}
+              <span
+                className="font-semibold cursor-pointer"
+                onClick={handleDescription}
+              >
+                {" "}
+                less...
+              </span>
+            </>
+          ) : (
+            <>
+              {parseDescription(description)}
+              <span
+                className="font-semibold cursor-pointer"
+                onClick={handleDescription}
+              >
+                {" "}
+                more...
+              </span>
+            </>
+          )
         ) : (
-          <>
-            {description}
-            <span
-              className="font-semibold cursor-pointer"
-              onClick={handleDescription}
-            >
-              {" "}
-              less...
-            </span>
-          </>
+          parseDescription(description)
         )}
       </p>
     </div>

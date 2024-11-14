@@ -4,6 +4,7 @@ import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import { renderTextWithLinks } from "../utils/formaters";
 
 const Comment = ({ comment, reply, onTimeClick }) => {
 
@@ -38,51 +39,6 @@ const extractTimestampFromLink = (link) => {
 
   const time = moment(publishedAt).fromNow();
 
-  const renderTextWithLinks = (text) => {
-    const linkRegex = /<a href="([^"]+)">([^<]+)<\/a>/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-
-    while ((match = linkRegex.exec(text)) !== null) {
-      if (match.index > lastIndex) {
-        parts.push(text.substring(lastIndex, match.index));
-      }
-
-      const link = match[1];
-      const linkText = match[2];
-      const seconds = extractTimestampFromLink(link);
-
-      if (seconds !== null) {
-        parts.push(
-          <a
-            key={seconds}
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              onTimeClick(seconds);
-            }}
-            className="text-blue-500"
-          >
-            {linkText}
-          </a>
-        );
-      } else {
-        parts.push(linkText);
-      }
-
-      lastIndex = linkRegex.lastIndex;
-    }
-
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
-    }
-
-    return parts;
-  };
-
-
-
   return (
     <div className={`w-full flex items-start ${reply ? "mt-2" : "mt-1"}`}>
       <img
@@ -98,9 +54,8 @@ const extractTimestampFromLink = (link) => {
             {time}
           </span>
         </h4>
-        {/* <p className="text-gray-700 mt-1 text-sm">{textDisplay}</p> */}
-        <p className="text-gray-700 mt-1 text-sm">
-          {renderTextWithLinks(textDisplay)}
+        <p className="mt-1 text-sm">
+        {renderTextWithLinks(textDisplay, extractTimestampFromLink, onTimeClick)}
         </p>
         <div className="flex gap-2 mt-1">
           <button className="px-4 py-1 cursor-pointer">
