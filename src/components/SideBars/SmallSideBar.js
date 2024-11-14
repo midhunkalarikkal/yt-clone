@@ -12,7 +12,7 @@ const SmallSideBar = () => {
   );
   return (
     isSmallSidebarOpen && (
-      <div className={`w-[5%] py-2 px-2 h-screen fixed top-14 bg-white`}>
+      <div className={`w-[6%] py-2 px-2 h-screen fixed top-14 bg-white`}>
         <div style={{ borderBottom: "1px solid #f0f0f0" }}>
           <ul>
             <Link to={"/"}>

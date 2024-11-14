@@ -16,7 +16,7 @@ const ChannelDetailSmall = ({ id }) => {
         />
         <div>
           <h4 className="text-lg font-medium">Channel Name</h4>
-          <p className="text-sm text-gray-500">Subscriber count</p>
+          <p className="text-sm text-[#606060]">Subscriber count</p>
         </div>
 
         <button className="ml-4 px-4 py-2 bg-black text-white font-medium rounded-full hover:bg-[#272727] transition">
