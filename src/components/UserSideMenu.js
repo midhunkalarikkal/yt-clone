@@ -1,6 +1,10 @@
 import React from "react";
+import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
 import GoogleIcon from "@mui/icons-material/Google";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useDispatch, useSelector } from "react-redux";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import SwitchAccountIcon from "@mui/icons-material/SwitchAccount";
@@ -12,16 +16,12 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import KeyboardAltOutlinedIcon from "@mui/icons-material/KeyboardAltOutlined";
 import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
 import AddModeratorOutlinedIcon from "@mui/icons-material/AddModeratorOutlined";
+import { setUser, toggleAppearanceMenu, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { setUser, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
-import { toast } from "react-toastify";
 
 
-const HeaderNavMenu = () => {
+const UserSideMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.state.user);
 
@@ -35,6 +35,11 @@ const HeaderNavMenu = () => {
     }).catch((error) => {
       toast.error("Logout failed, please try again.")
     })
+  }
+
+  const handleAppearanceMenu = () => {
+    dispatch(toggleAppearanceMenu());
+    dispatch(toggleUserSideMenu());
   }
 
   return (
@@ -90,7 +95,7 @@ const HeaderNavMenu = () => {
             <AdminPanelSettingsOutlinedIcon fontSize="medium" />
             <span className="ml-4 text-sm">Your data in YouTube</span>
           </li>
-          <li className="custom-list-item">
+          <li className="custom-list-item" onClick={handleAppearanceMenu}>
             <ModeNightOutlinedIcon fontSize="medium" />{" "}
             <span className="ml-4 text-sm">Appearance Light</span>
             <KeyboardArrowRightOutlinedIcon className="ml-auto"/>
@@ -142,4 +147,4 @@ const HeaderNavMenu = () => {
   );
 };
 
-export default HeaderNavMenu;
+export default UserSideMenu;

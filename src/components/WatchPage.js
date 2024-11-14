@@ -117,7 +117,7 @@ const WatchPage = () => {
               className="mx-4 w-full"
               type="text"
               placeholder="Add a comment"
-              style={{ border: 0, borderBottom: "1px solid black", borderColor: "#f2f2f2", outline:"none" }}
+              style={{ border: 0, borderBottom: "1px solid #f2f2f2", outline:"none" }}
             />
           </div>
             <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount} onTimeClick={handleTimeClick}/>

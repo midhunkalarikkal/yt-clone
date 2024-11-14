@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import HeaderNavMenu from "./HeaderNavMenu";
+import UserSideMenu from "./UserSideMenu";
 import MicIcon from "@mui/icons-material/Mic";
 import MenuIcon from "@mui/icons-material/Menu";
 import { auth, provider } from "../utils/firebase";
@@ -14,16 +14,17 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { setUser, toggleSidebar, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
+import AppearanceMenu from "./AppearanceMenu";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [signInLoading, setSignInLoading] = useState(false);
+
   const searchCache = useSelector((store) => store.search);
   const userLoggedIn = useSelector((store) => store.state?.isUserLoggedIn);
-  const userSideMenuOpen = useSelector(
-    (store) => store.state?.isUserSideMenuOpen
-  );
+  const userSideMenuOpen = useSelector((store) => store.state?.isUserSideMenuOpen);
+  const appearanceMenuOpen = useSelector((store) => store.state.isAppearanceMenuOpen);
   const user = useSelector((store) => store.state.user);
   const dispatch = useDispatch();
 
@@ -204,7 +205,8 @@ const Header = () => {
           </>
         )}
       </div>
-      {userSideMenuOpen && <HeaderNavMenu />}
+      {userSideMenuOpen && <UserSideMenu />}
+      {appearanceMenuOpen && <AppearanceMenu />}
     </div>
   );
 };

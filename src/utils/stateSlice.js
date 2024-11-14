@@ -7,8 +7,10 @@ const stateSlice = createSlice({
     isSmallSidebarOpen: true,
     isUserSideMenuOpen: false,
     isUserLoggedIn: false,
+    isAppearanceMenuOpen: false,
     user: null,
     limitReached: false,
+    isDarkTheme: false,
   },
   reducers: {
     toggleSidebar: (state) => {
@@ -35,6 +37,16 @@ const stateSlice = createSlice({
     setYoutubeLimitReached: (state, action) => {
       state.limitReached = action.payload;
     },
+    toggleAppearanceMenu: (state) => {
+      state.isAppearanceMenuOpen = !state.isAppearanceMenuOpen;
+    },
+    makeDarkTheme: (state) => {
+      state.isDarkTheme = true;
+    }
+    ,
+    makeLightTheme: (state) => {
+      state.isDarkTheme = false;
+    }
   },
 });
 
@@ -46,6 +58,9 @@ export const {
   updateUserLoggedIn,
   toggleUserSideMenu,
   setUser,
-  setYoutubeLimitReached
+  setYoutubeLimitReached,
+  toggleAppearanceMenu,
+  makeDarkTheme,
+  makeLightTheme
 } = stateSlice.actions;
 export default stateSlice.reducer;
