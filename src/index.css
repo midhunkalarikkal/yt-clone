@@ -1,5 +1,13 @@
 .custom-list-item {
-    @apply my-1 px-4 py-2 flex items-center justify-start hover:bg-[#e6e6e6] rounded-xl cursor-pointer;
+    @apply my-1 px-4 py-2 flex items-center justify-start  rounded-xl cursor-pointer;
+  }
+
+  .custom-list-item:hover {
+    background-color: var(--hover-bg);
+  }
+
+  .custom-smallList-item:hover {
+    background-color: var(--hover-bg);
   }
 
     .no-scrollbar::-webkit-scrollbar {

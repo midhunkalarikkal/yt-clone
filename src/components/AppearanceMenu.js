@@ -15,37 +15,33 @@ const AppearanceMenu = () => {
 };
 
 const handleDarkTheme = () => {
-      dispatch(toggleAppearanceMenu());
       dispatch(makeDarkTheme());
     };
     
     const handleLightTheme = () => {
-        dispatch(toggleAppearanceMenu());
         dispatch(makeLightTheme());
   };
 
   return (
-    <div className="absolute top-12 right-8 py-4 px-8 rounded-lg shadow-xl bg-white">
+    <div className={`absolute top-12 right-8 py-4 px-8 rounded-lg shadow-xl`} style={{ backgroundColor: theme.mainBg}}>
       <div>
         <div
-          className="p-2 cursor-pointer"
-          style={{ borderBottom: "1px solid #f0f0f0" }}
+          className="p-2"
+          style={{ borderBottom: `1px solid ${theme.border}` }}
           onClick={handleAppearanceMenu}
         >
-          <span className="font-semibold" styel={{color: theme.menuText}}>
+          <span className="font-semibold cursor-pointer" style={{color: theme.menuText}}>
             <ArrowBackOutlinedIcon /> Appearance
           </span>
         </div>
         <ul>
-          <li>
-            <span className="text-[#666666] text-xs">
+          <li className="text-xs font-semibold p-2" style={{color: theme.textTwo}}>
               Setting applies to this browser only
-            </span>
           </li>
-          <li className="custom-list-item" onClick={handleDarkTheme}>
+          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.menuHover}} onClick={handleDarkTheme}>
             <span className="ml-4 text-sm">Dark theme</span>
           </li>
-          <li className="custom-list-item" onClick={handleLightTheme}>
+          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.menuHover }} onClick={handleLightTheme}>
             <span className="ml-4 text-sm">Light theme</span>
           </li>
         </ul>
