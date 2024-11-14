@@ -9,11 +9,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
+import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { setUser, toggleSidebar, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
-import { signInWithPopup, onAuthStateChanged, signInWithRedirect, getRedirectResult } from "firebase/auth";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -184,7 +184,7 @@ const Header = () => {
             />
             <img
               className="w-8 h-8 cursor-pointer rounded-full"
-              src={ user?.photoURL || "https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"}
+              src={ user.photoURL || "https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"}
               alt="userProfile"
               onClick={handleUserSideMenu}
               disabled={signInLoading}
