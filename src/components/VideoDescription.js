@@ -1,13 +1,19 @@
 import moment from "moment";
 import numeral from "numeral";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const VideoDescription = ({ videoId }) => {
+const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const [isExapnd, setIsExpand] = useState(false);
   const data = useSelector((store) =>
     store.videos?.items?.find((item) => item.id === videoId)
   );
+
+  useEffect(() => {
+    if (data && data.snippet?.title) {
+      onSetVideoTitle(data.snippet.title);
+    }
+  }, [data, onSetVideoTitle]);
 
   if (!data) {
     return <div>Loading</div>;

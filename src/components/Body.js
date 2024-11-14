@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import ErrorPage from "./ErrorPage";
 
 const Body = () => {
-  // useGetPopularVideos();
+  useGetPopularVideos();
   const limitReached = useSelector((store) => store.state.limitReached);
   return (
     <div className="flex">

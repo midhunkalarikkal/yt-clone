@@ -8,7 +8,7 @@ import { cacheResults } from "../utils/searchSlice";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
-import { YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
+import { DEFAULT_PROFILE_IMG, YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
 import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -184,7 +184,7 @@ const Header = () => {
             />
             <img
               className="w-8 h-8 cursor-pointer rounded-full"
-              src={ user.photoURL || "https://img.icons8.com/?size=100&id=z-JBA_KtSkxG&format=png&color=000000"}
+              src={ user.photoURL || DEFAULT_PROFILE_IMG}
               alt="userProfile"
               onClick={handleUserSideMenu}
               disabled={signInLoading}

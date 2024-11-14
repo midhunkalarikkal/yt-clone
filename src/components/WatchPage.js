@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
@@ -17,12 +17,16 @@ import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 const WatchPage = () => {
   const [player, setPlayer] = useState(null);
   const [ commentsCount, setCommentsCount ] = useState(null);
-  const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const [videoTitle, setVideoTitle] = useState(null);
   const playerRef = useRef(null);
-  
+
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");
+  
+  const user = useSelector((store) => store.state.user);
 
   const handleCommentCount = (data) => {
     setCommentsCount(data)
@@ -38,6 +42,10 @@ const WatchPage = () => {
       player.seekTo(seconds, true);
     }
   };
+
+  const handleVideoTitle = (title) => {
+    setVideoTitle(title);
+  }
 
   const onPlayerReady = (event) => {
     setPlayer(event.target);
@@ -72,7 +80,7 @@ const WatchPage = () => {
           ></iframe>
         </div>
         <div className="p-4">
-          <h3 className="text-xl font-semibold mb-2">Video Title</h3>
+          <h3 className="text-xl font-bold mb-2">{videoTitle || "Loading...."}</h3>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
            <ChannelDetailSmall id={channelId}/>
@@ -99,13 +107,13 @@ const WatchPage = () => {
             </div>
           </div>
         </div>
-        <VideoDescription videoId={videoId}/>
+        <VideoDescription videoId={videoId} onSetVideoTitle={handleVideoTitle}/>
         <div className="p-4">
           <h3 className="font-bold text-xl">{commentsCount} Comments</h3>
           <div className="flex w-full mt-6 mb-10">
             <img
               className="w-12 h-12 rounded-full mr-4"
-              src={DEFAULT_PROFILE_IMG}
+              src={ user?.photoURL ||DEFAULT_PROFILE_IMG }
               alt="Your_profile_image"
             />
             <input
