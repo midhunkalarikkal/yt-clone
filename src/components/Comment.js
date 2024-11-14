@@ -5,7 +5,14 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 
-const Comment = ({ comment, reply }) => {
+const Comment = ({ comment, reply, onTimeClick }) => {
+
+const extractTimestampFromLink = (link) => {
+  const timestampRegex = /t=(\d+)/;
+  const match = link.match(timestampRegex);
+  return match ? parseInt(match[1], 10) : null;
+};
+
   const imageUrl =
     comment?.snippet?.topLevelComment?.snippet?.authorProfileImageUrl ||
     reply?.snippet?.authorProfileImageUrl ||
@@ -31,6 +38,51 @@ const Comment = ({ comment, reply }) => {
 
   const time = moment(publishedAt).fromNow();
 
+  const renderTextWithLinks = (text) => {
+    const linkRegex = /<a href="([^"]+)">([^<]+)<\/a>/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+
+      const link = match[1];
+      const linkText = match[2];
+      const seconds = extractTimestampFromLink(link);
+
+      if (seconds !== null) {
+        parts.push(
+          <a
+            key={seconds}
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              onTimeClick(seconds);
+            }}
+            className="text-blue-500"
+          >
+            {linkText}
+          </a>
+        );
+      } else {
+        parts.push(linkText);
+      }
+
+      lastIndex = linkRegex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts;
+  };
+
+
+
   return (
     <div className={`w-full flex items-start ${reply ? "mt-2" : "mt-1"}`}>
       <img
@@ -46,7 +98,10 @@ const Comment = ({ comment, reply }) => {
             {time}
           </span>
         </h4>
-        <p className="text-gray-700 mt-1 text-sm">{textDisplay}</p>
+        {/* <p className="text-gray-700 mt-1 text-sm">{textDisplay}</p> */}
+        <p className="text-gray-700 mt-1 text-sm">
+          {renderTextWithLinks(textDisplay)}
+        </p>
         <div className="flex gap-2 mt-1">
           <button className="px-4 py-1 cursor-pointer">
             <ThumbUpOutlinedIcon fontSize="small" />{" "}

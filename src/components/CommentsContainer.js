@@ -4,7 +4,7 @@ import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
-const CommentsContainer = ({ videoId, onCommentCountUpdate }) => {
+const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
   const [showReply, setShowReply] = useState(false);
   const { comments, loading, error } = useGetCommentThreads(videoId);
 
@@ -40,7 +40,7 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate }) => {
     <>
       {comments.map((comment) => (
         <div key={comment.id} className="w-full mt-6">
-          <Comment key={comment.id} comment={comment}/>
+          <Comment key={comment.id} comment={comment} onTimeClick={onTimeClick}/>
             {comment?.replies?.comments && (
               <div className="px-4 py-2">
                 <button

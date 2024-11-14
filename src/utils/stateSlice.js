@@ -8,6 +8,7 @@ const stateSlice = createSlice({
     isUserSideMenuOpen: false,
     isUserLoggedIn: false,
     user: null,
+    limitReached: false,
   },
   reducers: {
     toggleSidebar: (state) => {
@@ -30,7 +31,10 @@ const stateSlice = createSlice({
     },
     setUser: (state, action) => {
       state.user = action.payload
-    }
+    },
+    setYoutubeLimitReached: (state, action) => {
+      state.limitReached = action.payload;
+    },
   },
 });
 
@@ -41,6 +45,7 @@ export const {
   closeSmallSidebar,
   updateUserLoggedIn,
   toggleUserSideMenu,
-  setUser
+  setUser,
+  setYoutubeLimitReached
 } = stateSlice.actions;
 export default stateSlice.reducer;

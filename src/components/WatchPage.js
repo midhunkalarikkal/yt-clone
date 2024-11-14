@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
@@ -15,9 +15,11 @@ import ChannelDetailSmall from "./ChannelDetailSmall";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 
 const WatchPage = () => {
+  const [player, setPlayer] = useState(null);
   const [ commentsCount, setCommentsCount ] = useState(null);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+  const playerRef = useRef(null);
   
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");
@@ -31,16 +33,40 @@ const WatchPage = () => {
     dispatch(closeSmallSidebar());
   }, []);
 
+   // Handle time click for seeking the video
+   const handleTimeClick = (seconds) => {
+    console.log("time clicked: ", seconds);
+    if (player) {
+      player.seekTo(seconds, true); // Seek to the timestamp
+    }
+  };
+
+  // When the player is ready, set the player instance
+  const onPlayerReady = (event) => {
+    setPlayer(event.target);
+  };
+
+  // YouTube API iframe callback to initialize the player
+  window.onYouTubePlayerAPIReady = () => {
+    new window.YT.Player(playerRef.current, {
+      videoId,
+      events: {
+        onReady: onPlayerReady, // When player is ready, call onPlayerReady
+      },
+    });
+  };
+
   return (
     <div className="flex px-4 mt-14 pt-1 w-full">
       <div className="w-[70%] overflow-hidden">
         <div>
           <iframe
+          ref={playerRef}
             className="w-full h-[600px] lg:rounded-lg"
             src={
               "https://www.youtube.com/embed/" +
               searchParams.get("v") +
-              "?si=axB2wPjrFHkbGZFr"
+              "?si=axB2wPjrFHkbGZFr?autoplay=1&enablejsapi=1"
             }
             title="YouTube video player"
             frameBorder="0"
@@ -93,7 +119,7 @@ const WatchPage = () => {
               style={{ border: 0, borderBottom: "1px solid black", borderColor: "#f2f2f2", outline:"none" }}
             />
           </div>
-            <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount}/>
+            <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount} onTimeClick={handleTimeClick}/>
         </div>
       </div>
       <SuggestionVideosContainer />
