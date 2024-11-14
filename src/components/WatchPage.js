@@ -85,23 +85,20 @@ const WatchPage = () => {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
            <ChannelDetailSmall id={channelId}/>
 
-            <div className="flex items-center gap-3">
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
-                <ThumbUpOutlinedIcon />
+            <div className="flex items-center gap-4">
+              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+                <ThumbUpOutlinedIcon /> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon />
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
-                <ThumbDownOutlinedIcon />
+              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+                <ReplyOutlinedIcon /> <span className="font-semibold">Share</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
-                <ReplyOutlinedIcon /> <span>Sahre</span>
+              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+                <GetAppOutlinedIcon /> <span className="font-semibold">Download</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
-                <GetAppOutlinedIcon /> <span>Download</span>
+              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+                <ContentCutOutlinedIcon /> <span className="font-semibold">Cut</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
-                <ContentCutOutlinedIcon /> <span>Cut</span>
-              </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-md transition">
+              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
                 <MoreHorizOutlinedIcon />
               </button>
             </div>

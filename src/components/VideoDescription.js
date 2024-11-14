@@ -2,7 +2,7 @@ import moment from "moment";
 import numeral from "numeral";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import {parseDescription} from '../utils/formaters'
+import { parseDescription } from "../utils/formaters";
 
 const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const [isExapnd, setIsExpand] = useState(false);
@@ -17,7 +17,13 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   }, [data, onSetVideoTitle]);
 
   if (!data) {
-    return <div>Loading</div>;
+    return (
+      <div className="p-4  mr-4 bg-[#f2f2f2]">
+        <p className="text-md font-semibold">
+          <div>Loading</div>;
+        </p>
+      </div>
+    );
   }
 
   const handleDescription = () => {
@@ -31,37 +37,41 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const date = moment(publishedAt).fromNow();
 
   return (
-    <div className="p-4  mr-4 bg-[#f2f2f2]">
+    <div className="p-4  mr-4 bg-[#f2f2f2] rounded-lg">
       <p className="text-md font-semibold">
-        {views} views {date}
+        {views ? views : "00"} views {date ? date : "Loading..."}
       </p>
       <p className="text-md">
-      {description.length > 300 ? (
-          isExapnd ? (
-            <>
-              {parseDescription(description)}
-              <span
-                className="font-semibold cursor-pointer"
-                onClick={handleDescription}
-              >
-                {" "}
-                less...
-              </span>
-            </>
+        {description ? (
+          description.length > 300 ? (
+            isExapnd ? (
+              <>
+                {parseDescription(description)}
+                <span
+                  className="font-semibold cursor-pointer"
+                  onClick={handleDescription}
+                >
+                  {" "}
+                  less...
+                </span>
+              </>
+            ) : (
+              <>
+                {parseDescription(description)}
+                <span
+                  className="font-semibold cursor-pointer"
+                  onClick={handleDescription}
+                >
+                  {" "}
+                  more...
+                </span>
+              </>
+            )
           ) : (
-            <>
-              {parseDescription(description)}
-              <span
-                className="font-semibold cursor-pointer"
-                onClick={handleDescription}
-              >
-                {" "}
-                more...
-              </span>
-            </>
+            parseDescription(description)
           )
         ) : (
-          parseDescription(description)
+          "Loading..."
         )}
       </p>
     </div>

@@ -4,7 +4,7 @@ import numeral from "numeral";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 
 const ChannelDetailSmall = ({ id }) => {
-  const {channelData, loading, error} = useGetChannelData(id);
+  const { channelData, loading, error } = useGetChannelData(id);
 
   if (loading || error) {
     return (
@@ -19,7 +19,7 @@ const ChannelDetailSmall = ({ id }) => {
           <p className="text-sm text-gray-500">Subscriber count</p>
         </div>
 
-        <button className="ml-4 px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600 transition">
+        <button className="ml-4 px-4 py-2 bg-black text-white font-medium rounded-full hover:bg-[#272727] transition">
           Subscribe
         </button>
       </div>
@@ -30,8 +30,10 @@ const ChannelDetailSmall = ({ id }) => {
   const { localized, thumbnails } = snippet;
   const { subscriberCount } = statistics;
   const { title } = localized;
-  const { default : { url }} = thumbnails;
-  const subscribers = numeral(subscriberCount).format('0.0a');
+  const {
+    default: { url },
+  } = thumbnails;
+  const subscribers = numeral(subscriberCount).format("0.0a");
 
   return (
     <div className="flex items-center gap-4">
@@ -42,10 +44,10 @@ const ChannelDetailSmall = ({ id }) => {
       />
       <div>
         <h4 className="text-lg font-medium">{title}</h4>
-        <p className="text-sm text-gray-500">{subscribers} subscribers</p>
+        <p className="text-sm text-[#606060]">{subscribers} subscribers</p>
       </div>
 
-      <button className="ml-4 px-4 py-2 bg-red-500 text-white font-medium rounded-md hover:bg-red-600 transition">
+      <button className="ml-4 px-4 py-2 bg-black text-white font-medium rounded-full hover:bg-[#272727] transition flex items-center justify-center">
         Subscribe
       </button>
     </div>
