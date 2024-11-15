@@ -13,12 +13,15 @@ import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
 import VideoDescription from "./VideoDescription";
 import ChannelDetailSmall from "./ChannelDetailSmall";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import { darkTheme, lightTheme } from "../utils/theme";
 
 const WatchPage = () => {
   const [player, setPlayer] = useState(null);
   const [ commentsCount, setCommentsCount ] = useState(null);
   const [videoTitle, setVideoTitle] = useState(null);
   const playerRef = useRef(null);
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
 
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -80,25 +83,25 @@ const WatchPage = () => {
           ></iframe>
         </div>
         <div className="p-4">
-          <h3 className="text-xl font-bold mb-2">{videoTitle || "Loading...."}</h3>
+          <h3 className="text-xl font-bold mb-2" style={{ color: theme.textOne }}>{videoTitle || "Loading...."}</h3>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
            <ChannelDetailSmall id={channelId}/>
 
             <div className="flex items-center gap-4">
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
                 <ThumbUpOutlinedIcon /> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon />
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
                 <ReplyOutlinedIcon /> <span className="font-semibold">Share</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
                 <GetAppOutlinedIcon /> <span className="font-semibold">Download</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
                 <ContentCutOutlinedIcon /> <span className="font-semibold">Cut</span>
               </button>
-              <button className="px-4 py-2 bg-[#f0f0f0] hover:bg-gray-200 rounded-full transition">
+              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
                 <MoreHorizOutlinedIcon />
               </button>
             </div>
@@ -106,7 +109,7 @@ const WatchPage = () => {
         </div>
         <VideoDescription videoId={videoId} onSetVideoTitle={handleVideoTitle}/>
         <div className="p-4">
-          <h3 className="font-bold text-xl">{commentsCount} Comments</h3>
+          <h3 className="font-bold text-xl" style={{ color: theme.textOne }}>{commentsCount} Comments</h3>
           <div className="flex w-full mt-6 mb-10">
             <img
               className="w-12 h-12 rounded-full mr-4"
@@ -117,7 +120,7 @@ const WatchPage = () => {
               className="mx-4 w-full"
               type="text"
               placeholder="Add a comment"
-              style={{ border: 0, borderBottom: "1px solid #f2f2f2", outline:"none" }}
+              style={{ border: 0, borderBottom: `1px solid ${theme.buttonOneBorder}`, outline:"none", backgroundColor: theme.mainBg, color: theme.textOne }}
             />
           </div>
             <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount} onTimeClick={handleTimeClick}/>
