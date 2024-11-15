@@ -7,7 +7,6 @@ export const lightTheme = {
     menuText: "#000000", // black
     menuHover: "#e6e6e6",
     subButtonBg: "#000000",  // black
-    subButtonHover: "#272727", //light black
     subButtonText: "#ffffff", // white
     descriptionBg: "#f2f2f2",  // light gray three
     descriptionLinkBg: "#e6e6e6", // light gray four
@@ -33,7 +32,6 @@ export const darkTheme = {
     menuText: "#ffffff",
     menuHover: "#272727",
     subButtonBg: "#ffffff",
-    subButtonHover: "#d9d9d9",
     subButtonText: "#000000",
     descriptionBg: "#2b2a2a",
     descriptionLinkBg: "#3e3e3e",
