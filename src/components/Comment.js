@@ -5,8 +5,13 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import { renderTextWithLinks } from "../utils/formaters";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../utils/theme";
 
 const Comment = ({ comment, reply, onTimeClick }) => {
+
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
 
 const extractTimestampFromLink = (link) => {
   const timestampRegex = /t=(\d+)/;
@@ -48,16 +53,16 @@ const extractTimestampFromLink = (link) => {
         onError={(e) => (e.target.src = DEFAULT_PROFILE_IMG)}
       />
       <div>
-        <h4 className="text-md font-semibold cursor-pointer">
+        <h4 className="text-md font-semibold cursor-pointer" style={{ color: theme.textOne }}>
           {authorDisplayName}{" "}
-          <span className="text-sm text-[#8c8c8c] hover:text-[#0f0f0f]">
+          <span className="text-sm" style={{ color: theme.commentTime }}>
             {time}
           </span>
         </h4>
-        <p className="mt-1 text-sm">
+        <p className="mt-1 text-sm" style={{ color: theme.textOne }}>
         {renderTextWithLinks(textDisplay, extractTimestampFromLink, onTimeClick)}
         </p>
-        <div className="flex gap-2 mt-1">
+        <div className="flex gap-2 mt-1" style={{ color: theme.textOne }}>
           <button className="px-4 py-1 cursor-pointer">
             <ThumbUpOutlinedIcon fontSize="small" />{" "}
             <span className="text-xs">{likeCount}</span>
@@ -65,12 +70,12 @@ const extractTimestampFromLink = (link) => {
           <button className="px-4 py-1 cursor-pointer">
             <ThumbDownOutlinedIcon fontSize="small" />
           </button>
-          <button className="px-4 py-1 text-sm font-semibold text-[#0f0f0f] hover:[#e5e5e5] cursor-pointer">
+          <button className="px-4 py-1 text-sm font-semibold hover:[#e5e5e5] cursor-pointer">
             Reply
           </button>
         </div>
       </div>
-      <div className="ml-auto">
+      <div className="ml-auto" style={{ color: theme.textOne }}>
         <MoreVertOutlinedIcon />
       </div>
     </div>

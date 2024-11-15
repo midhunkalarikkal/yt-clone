@@ -9,6 +9,10 @@
   .custom-smallList-item:hover {
     background-color: var(--hover-bg);
   }
+  
+  .custom-replybutton:hover {
+    background-color: var(--hover-bg);
+  }
 
     .no-scrollbar::-webkit-scrollbar {
       display: none;

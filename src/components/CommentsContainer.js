@@ -3,10 +3,14 @@ import React, { useEffect, useState } from "react";
 import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined';
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import { useSelector } from 'react-redux';
+import { darkTheme, lightTheme } from '../utils/theme';
 
 const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
   const [showReply, setShowReply] = useState(false);
   const { comments, loading, error } = useGetCommentThreads(videoId);
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
 
   const showCommentReply = () => {
     setShowReply(!showReply);
@@ -44,7 +48,7 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
             {comment?.replies?.comments && (
               <div className="px-4 py-2">
                 <button
-                  className="text-[#065fd4] font-semibold cursor-pointer hover:bg-[#def1ff] px-4 py-1 rounded-full"
+                  className="text-[#065fd4] font-semibold cursor-pointer px-4 py-1 rounded-full custom-replybutton" style={{'--hover-bg': theme.replyButtonBgHover}}
                   onClick={showCommentReply}
                 >
                   {showReply ? <KeyboardArrowUpOutlinedIcon /> : <KeyboardArrowDownOutlinedIcon />}
