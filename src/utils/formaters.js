@@ -1,6 +1,8 @@
 import React from "react";
+import { darkTheme, lightTheme } from "./theme";
 
-export const parseDescription = (text) => {
+export const parseDescription = (text, themeMode) => {
+  const theme = themeMode === false ? lightTheme : darkTheme;
     const urlRegex = /https?:\/\/[^\s]+/g;
     const parts = text.split(urlRegex).map((part, index, array) => {
       const match = text.match(urlRegex)?.[index];
@@ -16,7 +18,7 @@ export const parseDescription = (text) => {
         return (
           <React.Fragment key={index}>
             {processedPart}
-            <a href={match} target="_blank" rel="noopener noreferrer" className="text-black bg-[#e6e6e6] px-4 rounded-full">
+            <a href={match} target="_blank" rel="noopener noreferrer" className="px-4 rounded-full" style={{ color: theme.textOne, backgroundColor: theme.descriptionLinkBg }}>
               {url.pathname}
             </a>
           </React.Fragment>
