@@ -15,6 +15,9 @@ export const lightTheme = {
     commentTime: "#8c8c8c", // light gray six
     commentTimeHover: "#0f0f0f", // dark gray
     buttonOneBg: "#f0f0f0", // medium gray
+    buttonOneBorder: "#cccccc",
+    signInButonText: "#065fd4",
+    signInButtonBg: "#def1ff",
     replyButtonText: "#065fd4",  // blue
     replyButtonBgHover: "#def1ff",
     border: "#f0f0f0" // light blue
@@ -23,7 +26,7 @@ export const lightTheme = {
 
 export const darkTheme = {
     mainBg: "#0f0f0f",
-    textOne: "#ffffff",
+    textOne: "#faf7f7",
     textTwo: "#878787",
     textThree: "#3da2f9",
     smallText: "#606060",
@@ -39,6 +42,9 @@ export const darkTheme = {
     commentTime: "#606060",
     commentTimeHover: "#ffffff",
     buttonOneBg: "#272727",
+    buttonOneBorder: "#222222",
+    signInButonText: "#ffffff",
+    signInButtonBg: "#0f0f0f",
     replyButtonText: "#065fd4",
     replyButtonBgHover: "#263850",
     border: "#3f3f3f"
