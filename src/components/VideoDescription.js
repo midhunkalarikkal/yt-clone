@@ -45,38 +45,26 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
         {views ? views : "00"} views {date ? date : "Loading..."}
       </p>
       <p className="text-md" style={{ color: theme.textOne }}>
-        {description ? (
-          description.length > 300 ? (
-            isExapnd ? (
-              <>
-                {parseDescription(description, themeMode)}
-                <span
-                  className="font-semibold cursor-pointer"
-                  onClick={handleDescription}
-                >
-                  {" "}
-                  less...
-                </span>
-              </>
-            ) : (
-              <>
-                {parseDescription(description, themeMode)}
-                <span
-                  className="font-semibold cursor-pointer"
-                  onClick={handleDescription}
-                >
-                  {" "}
-                  more...
-                </span>
-              </>
-            )
-          ) : (
-            parseDescription(description, themeMode)
-          )
+      {description ? (
+        description.length > 300 ? (
+          <>
+            {isExapnd
+              ? parseDescription(description, themeMode)
+              : parseDescription(description.slice(0, 300), themeMode)}
+            <span
+              className="font-semibold cursor-pointer"
+              onClick={handleDescription}
+            >
+              {isExapnd ? " less..." : " more..."}
+            </span>
+          </>
         ) : (
-          "Loading..."
-        )}
-      </p>
+          parseDescription(description, themeMode)
+        )
+      ) : (
+        "Loading..."
+      )}
+    </p>
     </div>
   );
 };
