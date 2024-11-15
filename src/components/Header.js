@@ -15,7 +15,7 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { DEFAULT_PROFILE_IMG, YOUTUBE_SEARCH_SUGGESTION_API } from "../utils/constants";
-import { setUser, toggleAppearanceMenu, toggleSidebar, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
+import { appearanceMenuClose, setUser, toggleAppearanceMenu, toggleSidebar, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,11 +49,9 @@ const Header = () => {
   
   const handleUserSideMenu = () => {
     dispatch(toggleUserSideMenu());
+    dispatch(appearanceMenuClose());
   }
 
-  const handleAppearnaceMenu = () => {
-    dispatch(toggleAppearanceMenu());
-  }
   // Methods
 
   useEffect(() => {
@@ -203,7 +201,7 @@ const Header = () => {
           </>
         ) : (
           <>
-            <MoreVertOutlinedIcon style={{ color: theme.textOne }} onClick={handleAppearnaceMenu}/>
+            <MoreVertOutlinedIcon style={{ color: theme.textOne }}/>
             <button
               className="flex items-center justify-center px-4 py-2 rounded-full"
               style={{ border: `1px solid ${theme.buttonOneBorder}`, color: theme.signInButonText, backgroundColor: theme.signInButtonBg }}

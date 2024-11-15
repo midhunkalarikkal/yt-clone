@@ -37,13 +37,15 @@ const stateSlice = createSlice({
     setYoutubeLimitReached: (state, action) => {
       state.limitReached = action.payload;
     },
-    toggleAppearanceMenu: (state) => {
-      state.isAppearanceMenuOpen = !state.isAppearanceMenuOpen;
+    appearanceMenuOpen: (state) => {
+      state.isAppearanceMenuOpen = true;
+    },
+    appearanceMenuClose: (state) => {
+      state.isAppearanceMenuOpen = false;
     },
     makeDarkTheme: (state) => {
       state.isDarkTheme = true;
-    }
-    ,
+    },
     makeLightTheme: (state) => {
       state.isDarkTheme = false;
     }
@@ -59,7 +61,8 @@ export const {
   toggleUserSideMenu,
   setUser,
   setYoutubeLimitReached,
-  toggleAppearanceMenu,
+  appearanceMenuOpen,
+  appearanceMenuClose,
   makeDarkTheme,
   makeLightTheme
 } = stateSlice.actions;

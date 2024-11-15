@@ -18,7 +18,7 @@ import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
 import AddModeratorOutlinedIcon from "@mui/icons-material/AddModeratorOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import { setUser, toggleAppearanceMenu, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
+import { appearanceMenuOpen, setUser, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
 import { darkTheme, lightTheme } from "../utils/theme";
 
 
@@ -41,7 +41,7 @@ const UserSideMenu = () => {
   }
 
   const handleAppearanceMenu = () => {
-    dispatch(toggleAppearanceMenu());
+    dispatch(appearanceMenuOpen());
     dispatch(toggleUserSideMenu());
   }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { useDispatch, useSelector } from "react-redux";
-import { makeDarkTheme, makeLightTheme, toggleAppearanceMenu, toggleUserSideMenu } from "../utils/stateSlice";
+import { appearanceMenuClose, makeDarkTheme, makeLightTheme, toggleUserSideMenu } from "../utils/stateSlice";
 import { lightTheme, darkTheme } from "../utils/theme";
 
 const AppearanceMenu = () => {
@@ -10,7 +10,7 @@ const AppearanceMenu = () => {
     const theme = themeMode === false ? lightTheme : darkTheme;
 
   const handleAppearanceMenu = () => {
-    dispatch(toggleAppearanceMenu());
+    dispatch(appearanceMenuClose());
     dispatch(toggleUserSideMenu());
 };
 
