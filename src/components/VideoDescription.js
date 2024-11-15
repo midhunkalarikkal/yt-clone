@@ -21,9 +21,12 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
 
   if (!data) {
     return (
-      <div className="p-4  mr-4 rounded-lg" style={{ backgroundColor: theme.descriptionBg }}>
-        <p className="text-md font-semibold">
-          <div style={{ color: theme.textOne }}>Loading</div>;
+      <div
+        className="p-4  mr-4 rounded-lg"
+        style={{ backgroundColor: theme.descriptionBg }}
+      >
+        <p className="text-md font-semibold"
+           style={{ color: theme.textOne }}>Loading
         </p>
       </div>
     );
@@ -40,31 +43,37 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const date = moment(publishedAt).fromNow();
 
   return (
-    <div className="p-4  mr-4 rounded-lg" style={{ backgroundColor: theme.descriptionBg }}>
-      <p className="text-md font-semibold pb-2" style={{ color: theme.textOne }}>
+    <div
+      className="p-4 mr-4 rounded-lg"
+      style={{ backgroundColor: theme.descriptionBg }}
+    >
+      <div
+        className="text-md font-semibold pb-2"
+        style={{ color: theme.textOne }}
+      >
         {views ? views : "00"} views {date ? date : "Loading..."}
-      </p>
-      <p className="text-md" style={{ color: theme.textOne }}>
-      {description ? (
-        description.length > 300 ? (
-          <>
-            {isExapnd
-              ? parseDescription(description, themeMode)
-              : parseDescription(description.slice(0, 300), themeMode)}
-            <span
-              className="font-semibold cursor-pointer"
-              onClick={handleDescription}
-            >
-              {isExapnd ? " less..." : " more..."}
-            </span>
-          </>
+      </div>
+      <div className="text-md" style={{ color: theme.textOne }}>
+        {description ? (
+          description.length > 300 ? (
+            <>
+              {isExapnd
+                ? parseDescription(description, themeMode)
+                : parseDescription(description.slice(0, 300), themeMode)}
+              <span
+                className="font-semibold cursor-pointer"
+                onClick={handleDescription}
+              >
+                {isExapnd ? " less..." : " more..."}
+              </span>
+            </>
+          ) : (
+            parseDescription(description, themeMode)
+          )
         ) : (
-          parseDescription(description, themeMode)
-        )
-      ) : (
-        "Loading..."
-      )}
-    </p>
+          "Loading..."
+        )}
+      </div>
     </div>
   );
 };
