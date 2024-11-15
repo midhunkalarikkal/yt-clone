@@ -1,8 +1,13 @@
 import moment from "moment";
 import numeral from "numeral";
 import React, { memo } from "react";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../utils/theme";
 
 const SuggestionContainer = memo(({ info }) => {
+
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
 
   if (!info) return null;
 
@@ -26,11 +31,11 @@ const SuggestionContainer = memo(({ info }) => {
         </div>
       </div>
       <div className="w-[60%] px-2">
-        <h3 className="text-md">{trimmedTitle}</h3>
-        <p className="text xs text-[#707070]">{channelTitle}</p>
+        <h3 className="text-md" style={{ color: theme.textOne }}>{trimmedTitle}</h3>
+        <p className="text-xs" style={{ color: theme.textTwo }}>{channelTitle}</p>
         <div className="flex items-center justify-start">
-          <p className="text-xs text-[#707070]">{vc} views</p>
-          <p className="ml-4 text-xs text-[#707070]">{date}</p>
+          <p className="text-xs" style={{ color: theme.textTwo }}>{vc} views</p>
+           <p className="ml-4 text-xs" style={{ color: theme.textTwo }}>{date}</p>
         </div>
       </div>
     </div>
