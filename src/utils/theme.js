@@ -21,7 +21,6 @@ export const lightTheme = {
     replyButtonText: "#065fd4",  // blue
     replyButtonBgHover: "#def1ff",
     border: "#f0f0f0" // light blue
-    
 }
 
 export const darkTheme = {

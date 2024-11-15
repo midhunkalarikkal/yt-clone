@@ -5,11 +5,16 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link } from "react-router-dom";
 import useGetChannelData from "../utils/hooks/useGetChannelData";
 import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import { useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../utils/theme";
 
 const VideoCard = memo(({ info }) => {
 
   const [ channelProfileUrl, setChannelProfileUrl ] = useState(null);
   const {channelData, loading, error} = useGetChannelData(info?.snippet?.channelId);
+
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
   
   useEffect(() => {
     if (channelData) {
@@ -66,7 +71,7 @@ const VideoCard = memo(({ info }) => {
 
         <Link  to={`/watch?v=${id}&ch=${channelId}`}>
         <div className="flex-grow ml-3 overflow-hidden">
-          <h1 className="text-md font-medium line-clamp-2">{trimmedTitle}</h1>
+          <h1 className="text-md font-medium line-clamp-2" style={{ color: theme.textOne }}>{trimmedTitle}</h1>
           <p className="text-[#797979] text-sm font-semibold">{channelTitle}</p>
           <p className="text-[#797979] text-sm font-semibold">
             {vc} views • {date}
