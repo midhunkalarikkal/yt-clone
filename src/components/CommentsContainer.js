@@ -59,7 +59,7 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
                 </button>
                 {showReply &&
                   comment?.replies?.comments.map((reply, index) => (
-                    <Comment key={reply.etag+index} reply={reply}/>
+                    <Comment key={reply.etag+index} reply={reply}  onTimeClick={onTimeClick}/>
                   ))}
               </div>
             )}
