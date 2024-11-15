@@ -10,7 +10,7 @@ const stateSlice = createSlice({
     isAppearanceMenuOpen: false,
     user: null,
     limitReached: false,
-    isDarkTheme: false,
+    isDarkTheme: JSON.parse(localStorage.getItem("isDarkTheme")) || false,
   },
   reducers: {
     toggleSidebar: (state) => {
@@ -45,10 +45,12 @@ const stateSlice = createSlice({
     },
     makeDarkTheme: (state) => {
       state.isDarkTheme = true;
+      localStorage.setItem("isDarkTheme", JSON.stringify(true));
     },
     makeLightTheme: (state) => {
       state.isDarkTheme = false;
-    }
+      localStorage.setItem("isDarkTheme", JSON.stringify(false));
+    },
   },
 });
 
