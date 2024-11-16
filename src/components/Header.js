@@ -150,7 +150,8 @@ const Header = () => {
       {!searchOpen && (
         <div className="flex w-3/12 items-center justify-start">
           <MenuIcon
-            sx={{ fontSize: { xs: "2rem", md: "large" } }}
+            sx={{ fontSize: { xs: "2rem", md: "large" },
+                  display : { xs : "none", md: "block"} }}
             className="cursor-pointer"
             onClick={handleSideBar}
             style={{ color: theme.textOne }}

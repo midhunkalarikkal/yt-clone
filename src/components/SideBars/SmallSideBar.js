@@ -16,7 +16,7 @@ const SmallSideBar = () => {
 
   return (
     isSmallSidebarOpen && (
-      <div className={`w-[6%] py-2 px-2 h-screen fixed top-14 flex items-start justify-center`} style={{ backgroundColor: theme.mainBg}}>
+      <div className={`w-[6%] py-2 px-2 h-screen fixed top-14 items-start justify-center hidden md:flex`} style={{ backgroundColor: theme.mainBg}}>
         <div>
           <ul style={{ color: theme.menuText }}>
             <Link to={"/"}>

@@ -35,7 +35,7 @@ const Sidebar = () => {
   const theme = themeMode === false ? lightTheme : darkTheme;
 
   return (
-    <div className={`py-2 px-2 h-screen overflow-y-scroll fixed top-14 ${
+    <div className={`hidden md:block py-2 px-2 h-screen overflow-y-scroll fixed top-14 ${
       isSidebarOpen ? 'w-[14%]' : 'w-0 opacity-0 no-scrollbar'
     } transition-all duration-300`} style={{ backgroundColor: theme.mainBg }}>
       <div style={{ borderBottom: `1px solid ${theme.border}` }}>
