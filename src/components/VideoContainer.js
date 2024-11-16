@@ -6,7 +6,7 @@ const VideoContainer = memo(() => {
   const videos = useSelector((store) => store.videos.items);
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6 p-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-y-6 md:p-4">
       {videos && videos.map((video) => <VideoCard key={video.id} info={video} />)}
     </div>
   );

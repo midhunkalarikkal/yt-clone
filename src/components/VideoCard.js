@@ -71,9 +71,9 @@ const VideoCard = memo(({ info }) => {
 
         <Link  to={`/watch?v=${id}&ch=${channelId}`}>
         <div className="flex-grow ml-3 overflow-hidden">
-          <h1 className="text-md font-medium line-clamp-2" style={{ color: theme.textOne }}>{trimmedTitle}</h1>
-          <p className="text-sm font-semibold" style={{ color: theme.textTwo }}>{channelTitle}</p>
-          <p className="text-sm font-semibold" style={{ color: theme.textTwo }}>
+          <h1 className="text-sm md:text-md font-medium line-clamp-2" style={{ color: theme.textOne }}>{trimmedTitle}</h1>
+          <p className="text-xs md:text-sm font-semibold" style={{ color: theme.textTwo }}>{channelTitle} <span className="md:block">{vc} views • {date}</span></p>
+          <p className="text-sm font-semibold hidden md:block" style={{ color: theme.textTwo }}>
             {vc} views • {date}
           </p>
         </div>

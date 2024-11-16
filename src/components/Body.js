@@ -12,7 +12,7 @@ const Body = () => {
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
-  // useGetPopularVideos();  
+  useGetPopularVideos();  
   return (
     <div className="flex" style={{ background: theme.mainBg}}>
       <SmallSideBar />
