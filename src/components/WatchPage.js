@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import VideoDescription from "./VideoDescription";
 import { useSearchParams } from "react-router-dom";
 import CommentsContainer from "./CommentsContainer";
+import ChannelDetailSmall from "./ChannelDetailSmall";
+import { darkTheme, lightTheme } from "../utils/theme";
+import { useDispatch, useSelector } from "react-redux";
+import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import React, { useEffect, useRef, useState } from "react";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import GetAppOutlinedIcon from "@mui/icons-material/GetAppOutlined";
 import SuggestionVideosContainer from "./SuggestionVideosContainer";
@@ -10,10 +14,6 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
-import VideoDescription from "./VideoDescription";
-import ChannelDetailSmall from "./ChannelDetailSmall";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
-import { darkTheme, lightTheme } from "../utils/theme";
 
 const WatchPage = () => {
   const [player, setPlayer] = useState(null);
