@@ -100,7 +100,7 @@ const extractTimestampFromLink = (link) => {
   return (
     <div className={`w-full flex items-start ${reply ? "mt-2" : "mt-1"}`}>
       <img
-        className="w-12 h-12 rounded-full mr-4 cursor-pointer"
+        className="w-8 h-8 md:w-12 md:h-12 rounded-full mr-4 cursor-pointer"
         src={imageUrl}
         alt=":)"
         onError={(e) => (e.target.src = DEFAULT_PROFILE_IMG)}

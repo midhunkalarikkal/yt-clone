@@ -64,12 +64,12 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="flex px-4 mt-14 pt-1 w-full">
-      <div className="w-[70%] overflow-hidden">
+    <div className="flex flex-col lg:flex-row px-1 md:px-4 mt-14 md:pt-1 w-full">
+      <div className="w-full lg:w-[70%] overflow-hidden">
         <div>
           <iframe
-          ref={playerRef}
-            className="w-full h-[600px] lg:rounded-lg"
+            ref={playerRef}
+            className="w-full h-[200px] sm:h-[300px] md:h-[450px] lg:h-[600px] lg:rounded-lg"
             src={
               "https://www.youtube.com/embed/" +
               searchParams.get("v") +
@@ -82,29 +82,30 @@ const WatchPage = () => {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="p-4">
-          <h3 className="text-xl font-bold mb-2" style={{ color: theme.textOne }}>{videoTitle || "Loading...."}</h3>
+        <div className="p-1 md:p-4">
+          <h3 className="text-md md:text-xl font-bold mb-2" style={{ color: theme.textOne }}>{videoTitle || "Loading...."}</h3>
 
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
            <ChannelDetailSmall id={channelId}/>
 
-            <div className="flex items-center gap-4">
-              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ThumbUpOutlinedIcon /> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon />
+            <div className="flex items-center gap-2 md:gap-4 overflow-x-scroll no-scrollbar w-full md:w-auto">
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ThumbUpOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/>
               </button>
-              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ReplyOutlinedIcon /> <span className="font-semibold">Share</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ReplyOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Share</span>
               </button>
-              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <GetAppOutlinedIcon /> <span className="font-semibold">Download</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <GetAppOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Download</span>
               </button>
-              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ContentCutOutlinedIcon /> <span className="font-semibold">Cut</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ContentCutOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Cut</span>
               </button>
-              <button className="px-4 py-2 rounded-full transition" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <MoreHorizOutlinedIcon />
+              <button className="px-4 py-2 rounded-full transition text-xs md:text-lg" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <MoreHorizOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/>
               </button>
             </div>
+            
           </div>
         </div>
         <VideoDescription videoId={videoId} onSetVideoTitle={handleVideoTitle}/>
@@ -112,7 +113,7 @@ const WatchPage = () => {
           <h3 className="font-bold text-xl" style={{ color: theme.textOne }}>{commentsCount} Comments</h3>
           <div className="flex w-full mt-6 mb-10">
             <img
-              className="w-12 h-12 rounded-full mr-4"
+              className="w-8 h-8 md:w-12 md:h-12 rounded-full mr-4"
               src={ user?.photoURL ||DEFAULT_PROFILE_IMG }
               alt="Your_profile_image"
             />

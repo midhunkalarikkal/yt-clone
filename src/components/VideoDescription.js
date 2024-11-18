@@ -44,22 +44,22 @@ const VideoDescription = ({ videoId, onSetVideoTitle }) => {
 
   return (
     <div
-      className="p-4 mr-4 rounded-lg"
+      className="p-4 md:mr-4 rounded-lg"
       style={{ backgroundColor: theme.descriptionBg }}
     >
       <div
-        className="text-md font-semibold pb-2"
+        className="text-sm md:text-md font-semibold pb-2"
         style={{ color: theme.textOne }}
       >
         {views ? views : "00"} views {date ? date : "Loading..."}
       </div>
-      <div className="text-md" style={{ color: theme.textOne }}>
+      <div className="text-sm md:text-md" style={{ color: theme.textOne }}>
         {description ? (
-          description.length > 300 ? (
+          description.length > 200 ? (
             <>
               {isExapnd
                 ? parseDescription(description, themeMode)
-                : parseDescription(description.slice(0, 300), themeMode)}
+                : parseDescription(description.slice(0, 200), themeMode)}
               <span
                 className="font-semibold cursor-pointer"
                 onClick={handleDescription}
