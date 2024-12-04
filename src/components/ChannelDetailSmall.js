@@ -1,7 +1,6 @@
 import React from "react";
 import useGetChannelData from "../utils/hooks/useGetChannelData";
 import numeral from "numeral";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
 import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "../utils/theme";
 
@@ -16,7 +15,7 @@ const ChannelDetailSmall = ({ id }) => {
         <div className="w-12 h-12 rounded-full bg-gray-300"></div>
 
         <div className="flex-1">
-          <h4 className="h-4 bg-gray-300 rounded w-6/12 mb-2"></h4>
+          <p className="h-4 bg-gray-300 rounded w-6/12 mb-2"></p>
           <p className="h-3 bg-gray-300 rounded w-8/12"></p>
         </div>
 

@@ -89,20 +89,20 @@ const WatchPage = () => {
            <ChannelDetailSmall id={channelId}/>
 
             <div className="flex items-center gap-2 md:gap-4 overflow-x-scroll no-scrollbar w-full md:w-auto">
-              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ThumbUpOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-sm gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ThumbUpOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/> <span className="font-semibold">100k</span> <ThumbDownOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/>
               </button>
-              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ReplyOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Share</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-sm gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ReplyOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/> <span className="font-semibold">Share</span>
               </button>
-              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <GetAppOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Download</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-sm gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <GetAppOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/> <span className="font-semibold">Download</span>
               </button>
-              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-lg gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <ContentCutOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/> <span className="font-semibold">Cut</span>
+              <button className="flex items-center justify-stretch px-4 py-2 rounded-full transition text-xs md:text-sm gap-x-1" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <ContentCutOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/> <span className="font-semibold">Cut</span>
               </button>
-              <button className="px-4 py-2 rounded-full transition text-xs md:text-lg" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
-                <MoreHorizOutlinedIcon sx={{ fontSize: {xs:"1rem", md:"1.2rem", lg:"1.5rem"}}}/>
+              <button className="px-4 py-2 rounded-full transition text-xs md:text-sm" style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne}}>
+                <MoreHorizOutlinedIcon sx={{ fontSize: {xs:".9rem", md:"1.1rem", lg:"1.3rem"}}}/>
               </button>
             </div>
             
