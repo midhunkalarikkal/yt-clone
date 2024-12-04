@@ -44,6 +44,7 @@ const Header = () => {
   );
   const user = useSelector((store) => store.state.user);
   const themeMode = useSelector((store) => store.state.isDarkTheme);
+
   const theme = themeMode === false ? lightTheme : darkTheme;
   const dispatch = useDispatch();
 
@@ -179,6 +180,7 @@ const Header = () => {
               border: `1px solid ${theme.buttonOneBorder}`,
               outline: "none",
               backgroundColor: theme.mainBg,
+              color: theme.textOne,
             }}
             type="text"
             placeholder="Search"
@@ -218,6 +220,7 @@ const Header = () => {
           border: `1px solid ${theme.buttonOneBorder}`,
           outline: "none",
           backgroundColor: theme.mainBg,
+          color: theme.textOne,
         }}
         type="text"
         placeholder="Search"
@@ -254,7 +257,10 @@ const Header = () => {
               {suggestions.map((item) => (
                 <li
                   key={item}
-                  className="p-1 hover:bg-[#f0f0f0] cursor-default"
+                  className="p-1 cursor-default custom-searchSuggestion-bg"
+                  style={{
+                    "--hover-bg": theme.menuHover
+                  }}
                 >
                   <SearchIcon /> {item}
                 </li>
