@@ -38,7 +38,7 @@ const WatchPage = () => {
   useEffect(() => {
     dispatch(closeSidebar());
     dispatch(closeSmallSidebar());
-  }, []);
+  }, [dispatch]);
 
    const handleTimeClick = (seconds) => {
     if (player) {

@@ -1,15 +1,39 @@
-import React from "react";
-import useGetChannelData from "../../utils/hooks/useGetChannelData";
 import numeral from "numeral";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addChannelData } from "../../utils/videoSlice";
 import { darkTheme, lightTheme } from "../../utils/theme";
+import { CHANNEL_DETAILS_API, GAK } from "../../utils/constants";
 
 const ChannelDetailSmall = ({ id }) => {
-  const { channelData, loading, error } = useGetChannelData(id);
+  
+  const dispatch = useDispatch();
+  const chId = id; 
+
+  const chData = useSelector((store) =>
+    store.videos.channelData.find((item) => item.chId === chId)
+  );
+
+  useEffect(() => {
+    console.log("before channel data fetching")
+    if(!chId || chData) return;
+    const fetchChannelData = async () => {
+      const response = await fetch(
+        `${CHANNEL_DETAILS_API}${chId}&key=${GAK}`
+      );
+      console.log("Channel data fetched");
+      const data = await response.json();
+      if (data.items && data.items.length > 0) {
+        dispatch(addChannelData({ ...data.items[0], chId }));
+      }
+    }
+    fetchChannelData();
+  }, [chId, dispatch, chData]);
+
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
-  if (loading || error) {
+  if (!chData) {
     return (
       <div className="flex items-center gap-4 animate-pulse">
         <div className="w-12 h-12 rounded-full bg-gray-300"></div>
@@ -27,7 +51,7 @@ const ChannelDetailSmall = ({ id }) => {
     );
   }
 
-  const { snippet, statistics } = channelData;
+  const { snippet, statistics } = chData;
   const { localized, thumbnails } = snippet;
   const { subscriberCount } = statistics;
   const { title } = localized;

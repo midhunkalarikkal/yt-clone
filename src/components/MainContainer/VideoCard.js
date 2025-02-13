@@ -1,30 +1,43 @@
 import moment from "moment";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../../utils/theme";
+import React, { memo, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import React, { memo, useEffect, useState } from "react";
-import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
-import useGetChannelData from "../../utils/hooks/useGetChannelData";
+import { darkTheme, lightTheme } from "../../utils/theme";
+import {
+  CHANNEL_DETAILS_API,
+  DEFAULT_PROFILE_IMG,
+  GAK,
+} from "../../utils/constants";
+import { addChannelData } from "../../utils/videoSlice";
 
 const VideoCard = memo(({ info }) => {
+  console.log("VideoCard rendered")
+  const dispatch = useDispatch();
+  const chId = info?.snippet?.channelId;  
 
-  const [ channelProfileUrl, setChannelProfileUrl ] = useState(null);
-  const {channelData, loading, error} = useGetChannelData(info?.snippet?.channelId);
+  const chData = useSelector((store) =>
+    store.videos.channelData.find((item) => item.chId === chId)
+  );
 
-  const themeMode = useSelector((store) => store.state.isDarkTheme);
-  const theme = themeMode === false ? lightTheme : darkTheme;
-  
   useEffect(() => {
-    if (channelData) {
-      const profileUrl = channelData.snippet?.thumbnails?.default?.url;
-      if (profileUrl) {
-        setChannelProfileUrl(profileUrl);
+    if(!chId || chData) return;
+    const fetchChannelData = async () => {
+      const response = await fetch(
+        `${CHANNEL_DETAILS_API}${chId}&key=${GAK}`
+      );
+      const data = await response.json();
+      if (data.items && data.items.length > 0) {
+        dispatch(addChannelData({ ...data.items[0], chId }));
       }
     }
-  }, [channelData]);
-  
+    fetchChannelData();
+  }, [chId, dispatch, chData]);
+
+  const channelProfileImage = chData?.snippet?.thumbnails?.default?.url;
+  const themeMode = useSelector((store) => store.state.isDarkTheme);
+  const theme = themeMode === false ? lightTheme : darkTheme;
 
   if (!info) return null;
 
@@ -42,7 +55,7 @@ const VideoCard = memo(({ info }) => {
 
   return (
     <div className="flex flex-col overflow-hidden cursor-pointer">
-      <Link  to={`/watch?v=${id}&ch=${channelId}`}>
+      <Link to={`/watch?v=${id}&ch=${channelId}`}>
         <div className="h-[200px]">
           <img
             className="rounded-lg w-full h-full object-cover"
@@ -53,30 +66,38 @@ const VideoCard = memo(({ info }) => {
       </Link>
 
       <div className="flex py-4">
-        <div className="flex-shrink-0 w-10 h-10">
-          {loading || error ? (
-            <img
+      <div className="flex-shrink-0 w-10 h-10">
+          <img
             className="rounded-full w-full h-full"
-            src={DEFAULT_PROFILE_IMG}
+            src={channelProfileImage || DEFAULT_PROFILE_IMG}
             alt="channel_profile_image"
-            />
-          ) : (
-            <img
-            className="rounded-full w-full h-full"
-            src={channelProfileUrl}
-            alt="channel_profile_image"
-            />
-          )}
+          />
         </div>
 
-        <Link  to={`/watch?v=${id}&ch=${channelId}`}>
-        <div className="flex-grow ml-3 overflow-hidden">
-          <h1 className="text-sm md:text-md font-medium line-clamp-2" style={{ color: theme.textOne }}>{trimmedTitle}</h1>
-          <p className="text-xs md:text-sm font-semibold" style={{ color: theme.textTwo }}>{channelTitle} <span className="md:hidden">{vc} views • {date}</span></p>
-          <p className="text-sm font-semibold hidden md:block" style={{ color: theme.textTwo }}>
-            {vc} views • {date}
-          </p>
-        </div>
+        <Link to={`/watch?v=${id}&ch=${channelId}`}>
+          <div className="flex-grow ml-3 overflow-hidden">
+            <h1
+              className="text-sm md:text-md font-medium line-clamp-2"
+              style={{ color: theme.textOne }}
+            >
+              {trimmedTitle}
+            </h1>
+            <p
+              className="text-xs md:text-sm font-semibold"
+              style={{ color: theme.textTwo }}
+            >
+              {channelTitle}{" "}
+              <span className="md:hidden">
+                {vc} views • {date}
+              </span>
+            </p>
+            <p
+              className="text-sm font-semibold hidden md:block"
+              style={{ color: theme.textTwo }}
+            >
+              {vc} views • {date}
+            </p>
+          </div>
         </Link>
 
         <div className="flex-shrink-0 ml-auto">

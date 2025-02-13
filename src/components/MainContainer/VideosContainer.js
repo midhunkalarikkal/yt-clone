@@ -1,15 +1,23 @@
+import React from "react";
 import VideoCard from "./VideoCard";
-import React, { memo } from "react";
 import { useSelector } from "react-redux";
+import VideoCardShimmer from "../Shimmers/VideoCardShimmer";
 
-const VideosContainer = memo(() => {
+const VideosContainer = () => {
+  console.log("VideosContainer rendered")
+  
   const videos = useSelector((store) => store.videos.items);
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 md:gap-y-6 md:p-4">
-      {videos && videos.map((video) => <VideoCard key={video.id} info={video} />)}
+      {videos && videos.length > 0
+        ? videos.map((video) => <VideoCard key={video.id} info={video} />)
+        : Array.from({ length: 12 }).map((_, index) => (
+            <VideoCardShimmer key={index} />
+          ))}
+          
     </div>
   );
-});
+};
 
 export default VideosContainer;

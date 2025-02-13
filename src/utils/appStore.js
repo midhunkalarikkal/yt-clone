@@ -1,14 +1,16 @@
 import stateSlice from "./stateSlice";
-import videoSlice from './videoSlice';
 import searchSlice from './searchSlice';
+import persistReducer from './videoSlice';
+import { persistStore } from "redux-persist";
 import { configureStore } from "@reduxjs/toolkit";
 
 const appStore = configureStore({
   reducer: {
     state: stateSlice,
-    videos: videoSlice,
-    search: searchSlice
+    videos: persistReducer,
+    search: searchSlice,
   },
 });
 
+export const persistor = persistStore(appStore)
 export default appStore;
