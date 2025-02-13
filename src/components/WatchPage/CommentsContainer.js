@@ -1,10 +1,10 @@
 import Comment from "./Comment";
 import React, { useEffect, useState } from "react";
-import useGetCommentThreads from "../utils/hooks/useGetCommentThreads";
+import useGetCommentThreads from "../../utils/hooks/useGetCommentThreads";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 
 const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
   const [showReply, setShowReply] = useState(false);

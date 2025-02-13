@@ -1,8 +1,8 @@
 import React from "react";
-import useGetChannelData from "../utils/hooks/useGetChannelData";
+import useGetChannelData from "../../utils/hooks/useGetChannelData";
 import numeral from "numeral";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 
 const ChannelDetailSmall = ({ id }) => {
   const { channelData, loading, error } = useGetChannelData(id);

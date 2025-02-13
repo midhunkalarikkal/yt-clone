@@ -1,10 +1,10 @@
 import moment from "moment";
 import numeral from "numeral";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { memo } from "react";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
 
 const SuggestionContainer = memo(({ info }) => {
   const themeMode = useSelector((store) => store.state.isDarkTheme);

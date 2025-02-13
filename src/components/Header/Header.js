@@ -1,14 +1,14 @@
 import { toast } from "react-toastify";
-import UserSideMenu from "./UserSideMenu";
+import UserSideMenu from "../Menus/UserSideMenu";
 import MicIcon from "@mui/icons-material/Mic";
-import AppearanceMenu from "./AppearanceMenu";
+import AppearanceMenu from "../Menus/AppearanceMenu";
 import MenuIcon from "@mui/icons-material/Menu";
-import { auth, provider } from "../utils/firebase";
+import { auth, provider } from "../../utils/firebase";
 import React, { useEffect, useState } from "react";
-import { cacheResults } from "../utils/searchSlice";
+import { cacheResults } from "../../utils/searchSlice";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
@@ -18,14 +18,14 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import {
   DEFAULT_PROFILE_IMG,
   YOUTUBE_SEARCH_SUGGESTION_API,
-} from "../utils/constants";
+} from "../../utils/constants";
 import {
   appearanceMenuClose,
   setUser,
   toggleSidebar,
   toggleUserSideMenu,
   updateUserLoggedIn,
-} from "../utils/stateSlice";
+} from "../../utils/stateSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -251,6 +251,7 @@ const Header = () => {
         </button>
           </>
         )}
+        
         {showSuggestions && suggestions.length > 0 && (
           <div className="absolute top-8 w-full md:w-7/12 md:left-[14%] rounded-lg shadow-lg z-10" style={{ backgroundColor: theme.mainBg, color: theme.textOne, border: `1px solid ${theme.buttonOneBorder}` }}>
             <ul className="py-2 px-4">

@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
-
+import { darkTheme, lightTheme } from "../../utils/theme";
 
 const ButtonList = () => {
 

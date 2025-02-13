@@ -2,10 +2,10 @@ import "./App.css";
 import Body from "./components/Body";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Header from "./components/Header";
-import WatchPage from "./components/WatchPage";
+import Header from "./components/Header/Header";
 import { ToastContainer } from "react-toastify";
-import MainContainer from "./components/MainContainer";
+import WatchPage from "./components/Pages/WatchPage";
+import MainContainer from "./components/Pages/MainContainer";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 

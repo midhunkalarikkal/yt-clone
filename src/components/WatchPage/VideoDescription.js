@@ -2,8 +2,8 @@ import moment from "moment";
 import numeral from "numeral";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import { parseDescription } from "../utils/formaters";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { parseDescription } from "../../utils/formaters";
+import { darkTheme, lightTheme } from "../../utils/theme";
 
 const VideoDescription = ({ videoId, onSetVideoTitle }) => {
   const [isExapnd, setIsExpand] = useState(false);

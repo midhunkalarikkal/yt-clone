@@ -2,7 +2,7 @@ import VideoCard from "./VideoCard";
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 
-const VideoContainer = memo(() => {
+const VideosContainer = memo(() => {
   const videos = useSelector((store) => store.videos.items);
 
   return (
@@ -12,4 +12,4 @@ const VideoContainer = memo(() => {
   );
 });
 
-export default VideoContainer;
+export default VideosContainer;

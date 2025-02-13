@@ -1,11 +1,11 @@
 import React from "react";
 import moment from "moment";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 
 const Comment = ({ comment, reply, onTimeClick }) => {
 

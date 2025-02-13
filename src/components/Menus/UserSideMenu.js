@@ -1,11 +1,12 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import GoogleIcon from "@mui/icons-material/Google";
+import { auth } from "../../utils/firebase";
 import LogoutIcon from "@mui/icons-material/Logout";
+import GoogleIcon from "@mui/icons-material/Google";
 import { useDispatch, useSelector } from "react-redux";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
+import { darkTheme, lightTheme } from "../../utils/theme";
+import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
 import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import SwitchAccountIcon from "@mui/icons-material/SwitchAccount";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -18,8 +19,7 @@ import AnnouncementOutlinedIcon from "@mui/icons-material/AnnouncementOutlined";
 import AddModeratorOutlinedIcon from "@mui/icons-material/AddModeratorOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import { appearanceMenuOpen, setUser, toggleUserSideMenu, updateUserLoggedIn } from "../utils/stateSlice";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { appearanceMenuOpen, setUser, toggleUserSideMenu, updateUserLoggedIn } from "../../utils/stateSlice";
 
 
 const UserSideMenu = () => {

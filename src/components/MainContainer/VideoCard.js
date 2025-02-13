@@ -2,11 +2,11 @@ import moment from "moment";
 import numeral from "numeral";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../utils/theme";
+import { darkTheme, lightTheme } from "../../utils/theme";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import React, { memo, useEffect, useState } from "react";
-import { DEFAULT_PROFILE_IMG } from "../utils/constants";
-import useGetChannelData from "../utils/hooks/useGetChannelData";
+import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
+import useGetChannelData from "../../utils/hooks/useGetChannelData";
 
 const VideoCard = memo(({ info }) => {
 
