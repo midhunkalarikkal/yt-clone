@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import SuggestionVideoCard from "./SuggestionVideoCard";
 
 const SuggestionVideosContainer = memo(() => {
-  console.log("Suggestion video container");
   const suggestionVideos = useSelector((store) => store.videos.items);
   return (
     <div className="w-full lg:w-[27%] px-2 md:px-4">

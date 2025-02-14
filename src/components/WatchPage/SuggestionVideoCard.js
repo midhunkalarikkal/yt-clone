@@ -6,7 +6,6 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { darkTheme, lightTheme } from "../../utils/theme";
 
 const SuggestionContainer = memo(({ info }) => {
-  console.log("Suggestion video card");
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
@@ -25,7 +24,7 @@ const SuggestionContainer = memo(({ info }) => {
 
   return (
     <>
-      <div className="mt-2 lg:mb-1 hidden sm:flex">
+      <div className="lg:mb-2 hidden sm:flex">
         <div className="w-[30%] lg:w-[50%]">
           <div className="w-full h-full">
             <img className="rounded-lg" src={thumbnailUrl} alt="thumbnail" />

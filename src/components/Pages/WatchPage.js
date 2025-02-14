@@ -1,30 +1,29 @@
-import VideoDescription from "../WatchPage/VideoDescription";
 import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { darkTheme, lightTheme } from "../../utils/theme";
+import React, { useEffect, useRef, useState } from "react";
+import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
+import VideoDescription from "../WatchPage/VideoDescription";
 import CommentsContainer from "../WatchPage/CommentsContainer";
 import ChannelDetailSmall from "../WatchPage/ChannelDetailSmall";
-import { darkTheme, lightTheme } from "../../utils/theme";
-import { useDispatch, useSelector } from "react-redux";
-import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
-import React, { useEffect, useRef, useState } from "react";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import GetAppOutlinedIcon from "@mui/icons-material/GetAppOutlined";
-import SuggestionVideosContainer from "../WatchPage/SuggestionVideosContainer";
-import { closeSidebar, closeSmallSidebar } from "../../utils/stateSlice";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import { closeSidebar, closeSmallSidebar } from "../../utils/stateSlice";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
+import SuggestionVideosContainer from "../WatchPage/SuggestionVideosContainer";
 
 const WatchPage = () => {
+  const dispatch = useDispatch();
+  const playerRef = useRef(null);
+  const [searchParams] = useSearchParams();
   const [player, setPlayer] = useState(null);
   const [ commentsCount, setCommentsCount ] = useState(null);
   const [videoTitle, setVideoTitle] = useState(null);
-  const playerRef = useRef(null);
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
-
-  const [searchParams] = useSearchParams();
-  const dispatch = useDispatch();
 
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");

@@ -83,35 +83,6 @@ const Sidebar = () => {
         </ul>
       </div>
       <div style={{ borderBottom: `1px solid ${theme.border}` }}>
-        <h3 className="my-1 px-4 py-2 flex items-center justify-start font-semibold" style={{ color: theme.menuText }}>Subscriptions</h3>
-        <ul style={{ color: theme.menuText }}>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-          <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
-            <DeblurRoundedIcon />
-            <span className="ml-4">Channel Name</span>
-          </li>
-        </ul>
-      </div>
-      <div style={{ borderBottom: `1px solid ${theme.border}` }}>
         <h3 className="my-1 px-4 py-2 flex items-center justify-start font-semibold" style={{ color: theme.menuText }}>Explore</h3>
         <ul style={{ color: theme.menuText }}>
           <li className="custom-list-item" style={{ "--hover-bg": theme.menuHover}}>
