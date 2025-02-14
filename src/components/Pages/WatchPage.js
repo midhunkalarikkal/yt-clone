@@ -13,7 +13,7 @@ import { closeSidebar, closeSmallSidebar } from "../../utils/stateSlice";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import MoreHorizOutlinedIcon from "@mui/icons-material/MoreHorizOutlined";
 import ContentCutOutlinedIcon from "@mui/icons-material/ContentCutOutlined";
-import SuggestionVideosContainer from "../WatchPage/SuggestionVideosContainer";
+import ChatWithSuggestionVideos from "../WatchPage/ChatWithSuggestionVideos";
 
 const WatchPage = () => {
   const dispatch = useDispatch();
@@ -126,7 +126,7 @@ const WatchPage = () => {
             <CommentsContainer videoId={videoId} onCommentCountUpdate={handleCommentCount} onTimeClick={handleTimeClick}/>
         </div>
       </div>
-      <SuggestionVideosContainer />
+      <ChatWithSuggestionVideos />
     </div>
   );
 };

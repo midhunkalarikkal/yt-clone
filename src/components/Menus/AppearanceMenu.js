@@ -23,7 +23,7 @@ const handleDarkTheme = () => {
   };
 
   return (
-    <div className={`absolute top-12 right-8 py-4 px-8 rounded-lg shadow-xl`} style={{ backgroundColor: theme.mainBg}}>
+    <div className={`absolute top-12 right-8 py-4 px-8 rounded-lg shadow-xl`} style={{ backgroundColor: theme.sideMenuBg}}>
       <div>
         <div
           className="p-2"
@@ -38,10 +38,10 @@ const handleDarkTheme = () => {
           <li className="text-xs font-semibold p-2" style={{color: theme.textTwo}}>
               Setting applies to this browser only
           </li>
-          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.menuHover}} onClick={handleDarkTheme}>
+          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.sideMenuHover}} onClick={handleDarkTheme}>
             <span className="ml-4 text-sm">Dark theme</span>
           </li>
-          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.menuHover }} onClick={handleLightTheme}>
+          <li className="custom-list-item" style={{ color: theme.menuText, "--hover-bg": theme.sideMenuHover }} onClick={handleLightTheme}>
             <span className="ml-4 text-sm">Light theme</span>
           </li>
         </ul>

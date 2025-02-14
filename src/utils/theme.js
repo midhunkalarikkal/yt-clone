@@ -19,7 +19,9 @@ export const lightTheme = {
     signInButtonBg: "#def1ff",
     replyButtonText: "#065fd4",  // blue
     replyButtonBgHover: "#def1ff",
-    border: "#f0f0f0" // light blue
+    border: "#f0f0f0", // light blue
+    sideMenuBg: "#ffffff",
+    sideMenuHover: "#f2f2f2"
 }
 
 export const darkTheme = {
@@ -44,5 +46,7 @@ export const darkTheme = {
     signInButtonBg: "#0f0f0f",
     replyButtonText: "#065fd4",
     replyButtonBgHover: "#263850",
-    border: "#3f3f3f"
+    border: "#3f3f3f",
+    sideMenuBg: "#282828",
+    sideMenuHover: "#3e3e3e"
 }
