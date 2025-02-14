@@ -1,15 +1,23 @@
 import Comment from "./Comment";
-import React, { useEffect, useState } from "react";
-import useGetCommentThreads from "../../utils/hooks/useGetCommentThreads";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "../../utils/theme";
+import { GAK, VIDEO_COMMENT_THRES_API } from "../../utils/constants";
+import { addComments } from "../../utils/videoSlice";
+import CommentContainerShimmer from "../Shimmers/CommentContainerShimmer";
 
-const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
+const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) => {
+  console.log("comment Container")
+
+  const dispatch = useDispatch();
   const [showReply, setShowReply] = useState(false);
   const [showFull, setShowFull] = useState(false);
-  const { comments, loading, error } = useGetCommentThreads(videoId);
+  
+  const comments = useSelector((store) => store.videos?.comments.find((comment) => comment.videoId === videoId )).comments;
+  console.log("comments : ",comments);
+
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
@@ -21,34 +29,28 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
     setShowFull(!showFull);
   };
 
+   useEffect(() => {
+    if (comments.length > 0) return;
+      const getComments = async () => {
+          const data = await fetch(
+            VIDEO_COMMENT_THRES_API + videoId + "&key=" + GAK
+          );
+          const json = await data.json();
+          dispatch(addComments({ videoId, items: json.items }))
+      };
+      getComments();
+    }, [videoId, dispatch, comments]);
+
   useEffect(() => {
-    if (comments) {
+    if (comments.length > 0) {
       onCommentCountUpdate(comments?.length);
     }
   }, [comments, onCommentCountUpdate]);
 
-  if (loading || error) {
-    return (
-      <div className="w-full flex items-start mt-6 animate-pulse">
-        <div className="w-12 h-12 rounded-full mr-4 bg-gray-400 shimmer"></div>
-        <div>
-          <div className="h-4 w-32 bg-gray-400 shimmer rounded mb-2"></div>
-          <div className="h-3 w-72 bg-gray-400 shimmer rounded mb-2"></div>
-          <div className="h-3 w-64 bg-gray-400 shimmer rounded mb-2"></div>
-          <div className="flex gap-2 mt-2">
-            <div className="w-8 h-4 bg-gray-400 shimmer rounded"></div>
-            <div className="w-8 h-4 bg-gray-400 shimmer rounded"></div>
-            <div className="w-12 h-4 bg-gray-400 shimmer rounded"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
-  return (
+  return  !comments ?  <CommentContainerShimmer /> : (
     <>
-      {!showFull && (
-
+      {!showFull && comments.length > 0 &&(
         <div className="xs-block md-hidden rounded-xl p-2 shadow-xl" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg }}>
           <Comment
             key={comments[0].id}
@@ -103,6 +105,6 @@ const CommentsContainer = ({ videoId, onCommentCountUpdate, onTimeClick }) => {
         ))}
     </>
   );
-};
+});
 
 export default CommentsContainer;

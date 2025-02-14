@@ -6,6 +6,7 @@ import { parseDescription } from "../../utils/formaters";
 import { darkTheme, lightTheme } from "../../utils/theme";
 
 const VideoDescription = ({ videoId, onSetVideoTitle }) => {
+  console.log("video description");
   const [isExapnd, setIsExpand] = useState(false);
   const data = useSelector((store) =>
     store.videos?.items?.find((item) => item.id === videoId)

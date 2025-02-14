@@ -6,6 +6,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { darkTheme, lightTheme } from "../../utils/theme";
 
 const SuggestionContainer = memo(({ info }) => {
+  console.log("Suggestion video card");
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
