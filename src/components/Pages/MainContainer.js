@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openSmallSidebar } from '../../utils/stateSlice';
 
 const MainContainer = () => {
-  console.log("MainContainer rendered")
   const dispatch = useDispatch()
   const sideMenuOpen = useSelector((store) => store.state.isSidebarOpen);
 

@@ -16,7 +16,6 @@ const useGetPopularVideos = () => {
       try{
       const data = await fetch(YOUTUBE_POPULARVIDEOS_API);
       const json = await data.json();
-      console.log("Fetched getVideos rendered")
 
         if (json.error?.errors?.some((err) => err.reason === "quotaExceeded")) {
           dispatch(setYoutubeLimitReached(true));

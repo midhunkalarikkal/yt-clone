@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "../../utils/theme";
 
 const ButtonList = () => {
-  console.log("ButtonList rendered")
 
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;

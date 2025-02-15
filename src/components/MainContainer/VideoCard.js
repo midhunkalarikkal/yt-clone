@@ -13,7 +13,6 @@ import {
 import { addChannelData } from "../../utils/videoSlice";
 
 const VideoCard = memo(({ info }) => {
-  console.log("VideoCard rendered")
   const dispatch = useDispatch();
   const chId = info?.snippet?.channelId;  
 

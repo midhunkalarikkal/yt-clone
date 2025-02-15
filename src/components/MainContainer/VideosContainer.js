@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import VideoCardShimmer from "../Shimmers/VideoCardShimmer";
 
 const VideosContainer = () => {
-  console.log("VideosContainer rendered")
   
   const videos = useSelector((store) => store.videos.items);
 

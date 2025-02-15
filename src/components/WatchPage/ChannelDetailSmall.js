@@ -15,13 +15,11 @@ const ChannelDetailSmall = ({ id }) => {
   );
 
   useEffect(() => {
-    console.log("channel details small before channel data fetching")
     if(!chId || chData) return;
     const fetchChannelData = async () => {
       const response = await fetch(
         `${CHANNEL_DETAILS_API}${chId}&key=${GAK}`
       );
-      console.log("channel details small Channel data fetched");
       const data = await response.json();
       if (data.items && data.items.length > 0) {
         dispatch(addChannelData({ ...data.items[0], chId }));

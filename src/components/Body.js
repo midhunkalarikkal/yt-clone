@@ -8,7 +8,6 @@ import ErrorPage from "./ErrorPage";
 import { darkTheme, lightTheme } from "../utils/theme";
 
 const Body = () => {
-  console.log("Body rendered")
   const limitReached = useSelector((store) => store.state.limitReached);
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;

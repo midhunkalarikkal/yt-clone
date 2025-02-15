@@ -13,7 +13,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
   const dispatch = useDispatch();
   const [showReply, setShowReply] = useState(false);
   const [showFull, setShowFull] = useState(false);
-  const comments = useSelector((store) => store.videos?.comments.find((comment) => comment.videoId === videoId )).comments;
+  const comments = useSelector((store) => store.videos?.comments?.find((comment) => comment.videoId === videoId ))?.comments;
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
 
@@ -26,7 +26,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
   };
 
   useEffect(() => {
-    if (comments.length > 0) return;
+    if (comments) return;
       const getComments = async () => {
         const data = await fetch(
           VIDEO_COMMENT_THRES_API + videoId + "&key=" + GAK
@@ -38,7 +38,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
   }, [videoId, dispatch, comments]);
 
   useEffect(() => {
-    if (comments.length > 0) {
+    if (comments) {
       onCommentCountUpdate(comments?.length);
     }
   }, [comments, onCommentCountUpdate]);
@@ -46,7 +46,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
 
   return  !comments ?  <CommentContainerShimmer /> : (
     <>
-      {!showFull && comments.length > 0 &&(
+      {!showFull && comments &&(
         <div className="xs-block md-hidden rounded-xl p-2 shadow-xl" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg }}>
           <Comment
             key={comments[0].id}

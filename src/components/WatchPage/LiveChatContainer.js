@@ -6,6 +6,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { darkTheme, lightTheme } from "../../utils/theme";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ChatMessage from "./ChatMessage";
 
 const LiveChatContainer = () => {
 
@@ -20,7 +21,9 @@ const LiveChatContainer = () => {
             <ClearIcon  className=""/>
             </span>
         </div>
-        <div className="flex-grow"></div>
+        <div className="flex-grow">
+            <ChatMessage />
+        </div>
         <div className="flex border-t p-3 justify-between" style={{ borderColor: theme.descriptionBg }}>
             <div className="flex justify-between rounded-3xl w-[85%] py-2 px-3" style={{ backgroundColor : theme.descriptionBg }}>
                 <p className="text-sm">Chat...</p>
