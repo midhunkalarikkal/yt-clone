@@ -12,6 +12,7 @@ const LiveChatContainer = () => {
 
     const themeMode = useSelector((store) => store.state?.isDarkTheme);
     const theme = themeMode === false ? lightTheme : darkTheme;
+
   return (
     <div className="flex flex-col w-full h-[200px] sm:h-[300px] md:h-[450px] lg:h-[650px] lg:rounded-lg border" style={{ color : theme.textOne , borderColor: theme.descriptionBg }}>
         <div className="flex justify-between border-b p-3" style={{ borderColor : theme.descriptionBg }}>
@@ -22,7 +23,7 @@ const LiveChatContainer = () => {
             </span>
         </div>
         <div className="flex-grow">
-            <ChatMessage />
+            <ChatMessage name={"Midhun K Paniker"} message={"Message ,,,,,,,mmmmmmmmmmmmmmnhbgvfrdutyg jergusvn begyyb"}/>
         </div>
         <div className="flex border-t p-3 justify-between" style={{ borderColor: theme.descriptionBg }}>
             <div className="flex justify-between rounded-3xl w-[85%] py-2 px-3" style={{ backgroundColor : theme.descriptionBg }}>
