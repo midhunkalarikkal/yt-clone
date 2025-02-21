@@ -1,6 +1,6 @@
 import React from 'react'
-import LiveChatContainer from './LiveChatContainer'
-import SuggestionVideosContainer from './SuggestionVideosContainer'
+import LiveChatContainer from './LiveChat/LiveChatContainer'
+import SuggestionVideosContainer from './Suggestion/SuggestionVideosContainer'
 
 const ChatWithSuggestionVideos = () => {
   return (

@@ -1,8 +1,8 @@
 import moment from "moment";
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../../utils/theme";
-import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
+import { darkTheme, lightTheme } from "../../../utils/theme";
+import { DEFAULT_PROFILE_IMG } from "../../../utils/constants";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";

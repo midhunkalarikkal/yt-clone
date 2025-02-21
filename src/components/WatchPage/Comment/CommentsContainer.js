@@ -1,10 +1,10 @@
 import Comment from "./Comment";
-import { addComments } from "../../utils/videoSlice";
+import { addComments } from "../../../utils/videoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import React, { memo, useEffect, useState } from "react";
-import { darkTheme, lightTheme } from "../../utils/theme";
-import { GAK, VIDEO_COMMENT_THRES_API } from "../../utils/constants";
-import CommentContainerShimmer from "../Shimmers/CommentContainerShimmer";
+import { darkTheme, lightTheme } from "../../../utils/theme";
+import { GAK, VIDEO_COMMENT_THRES_API } from "../../../utils/constants";
+import CommentContainerShimmer from "../../Shimmers/CommentContainerShimmer";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 
@@ -47,7 +47,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
   return  !comments ?  <CommentContainerShimmer /> : (
     <>
       {!showFull && comments &&(
-        <div className="xs-block md-hidden rounded-xl p-2 shadow-xl" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg }}>
+        <div className="xs-block md-hidden rounded-xl p-2 shadow-xl cursor-pointer" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg }}>
           <Comment
             key={comments[0].id}
             comment={comments[0]}
@@ -60,7 +60,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
         </div>
       )}
       {showFull &&
-      <button className="px-4 py-2 w-full rounded-xl shadow-xl" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne }}>Hide comments</button>
+      <button className="px-4 py-2 w-full rounded-xl shadow-xl cursor-pointer" onClick={showFullComments} style={{ backgroundColor: theme.buttonOneBg, color: theme.textOne }}>Hide comments</button>
       }
       {showFull &&
         comments.map((comment) => (

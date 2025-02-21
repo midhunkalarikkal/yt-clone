@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import ClearIcon from "@mui/icons-material/Clear";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { darkTheme, lightTheme } from '../../utils/theme';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { darkTheme, lightTheme } from '../../../utils/theme';
 
 const ChatTopBar = () => {
 

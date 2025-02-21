@@ -3,7 +3,7 @@ import numeral from "numeral";
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { darkTheme, lightTheme } from "../../utils/theme";
+import { darkTheme, lightTheme } from "../../../utils/theme";
 
 const SuggestionContainer = memo(({ info }) => {
   const themeMode = useSelector((store) => store.state.isDarkTheme);

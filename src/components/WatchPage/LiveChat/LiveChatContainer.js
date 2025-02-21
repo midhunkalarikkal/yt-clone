@@ -2,14 +2,14 @@ import ChatTopBar from "./ChatTopBar";
 import ChatMessage from "./ChatMessage";
 import React, { useEffect } from "react";
 import ChatInputForm from "./ChatInputForm";
-import { addMessage } from "../../utils/chatSlice";
+import { addMessage } from "../../../utils/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../../utils/theme";
+import { darkTheme, lightTheme } from "../../../utils/theme";
 import {
   generateRandomColor,
   generateRandomMessage,
   generateRandomName,
-} from "../../utils/helper";
+} from "../../../utils/helper";
 
 const LiveChatContainer = () => {
 
@@ -34,7 +34,7 @@ const LiveChatContainer = () => {
 
   return (
     <div
-      className="flex flex-col w-full h-[200px] sm:h-[300px] md:h-[450px] lg:h-[650px] lg:rounded-lg border"
+      className="flex flex-col w-full h-[400px] sm:h-[400px] md:h-[450px] lg:h-[650px] lg:rounded-lg border"
       style={{ color: theme.textOne, borderColor: theme.descriptionBg }}
     >
       <ChatTopBar />

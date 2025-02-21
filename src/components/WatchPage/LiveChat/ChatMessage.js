@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { darkTheme, lightTheme } from "../../utils/theme";
-import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
+import { darkTheme, lightTheme } from "../../../utils/theme";
+import { DEFAULT_PROFILE_IMG } from "../../../utils/constants";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
 const ChatMessage = React.memo(({ data }) => {

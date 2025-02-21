@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 import React, { useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
-import { addMessage } from "../../utils/chatSlice";
+import { addMessage } from "../../../utils/chatSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TagFacesIcon from "@mui/icons-material/TagFaces";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
