@@ -1,3 +1,4 @@
+import chatSlice from './chatSlice';
 import stateSlice from "./stateSlice";
 import searchSlice from './searchSlice';
 import persistReducer from './videoSlice';
@@ -9,6 +10,7 @@ const appStore = configureStore({
     state: stateSlice,
     videos: persistReducer,
     search: searchSlice,
+    chat: chatSlice,
   },
 });
 

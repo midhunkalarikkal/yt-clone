@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ClearIcon from '@mui/icons-material/Clear';
 import TagFacesIcon from '@mui/icons-material/TagFaces';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -7,11 +7,27 @@ import { darkTheme, lightTheme } from "../../utils/theme";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatMessage from "./ChatMessage";
+import { addMessage } from "../../utils/chatSlice";
 
 const LiveChatContainer = () => {
 
+    const dispatch = useDispatch();
     const themeMode = useSelector((store) => store.state?.isDarkTheme);
     const theme = themeMode === false ? lightTheme : darkTheme;
+
+    const messages = useSelector((store) => store.chat?.messages);
+    console.log("messages : ",messages);
+
+    useEffect(() => {
+        const i = setInterval(() => {
+            console.log("Message");
+            dispatch(addMessage({
+                name: "Midhun K Paniker",
+                message: "New message"
+            }));
+        },2000)
+        return () =>  clearInterval(i)
+    },[])
 
   return (
     <div className="flex flex-col w-full h-[200px] sm:h-[300px] md:h-[450px] lg:h-[650px] lg:rounded-lg border" style={{ color : theme.textOne , borderColor: theme.descriptionBg }}>
@@ -23,7 +39,10 @@ const LiveChatContainer = () => {
             </span>
         </div>
         <div className="flex-grow">
-            <ChatMessage name={"Midhun K Paniker"} message={"Hi hello how are you this is from "}/>
+            {messages.length > 0 && messages.map((chat, index) => 
+            <ChatMessage key={index} name={chat.name} message={chat.message}/>
+        )}
+        {/* <ChatMessage name={"Midhun K Paniker"} message={"Hi my name is Midhun K Paniker"}/> */}
         </div>
         <div className="flex border-t p-3 justify-between" style={{ borderColor: theme.descriptionBg }}>
             <div className="flex justify-between rounded-3xl w-[85%] py-2 px-3" style={{ backgroundColor : theme.descriptionBg }}>
