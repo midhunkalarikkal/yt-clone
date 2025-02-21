@@ -67,12 +67,29 @@ const names = [
     "I love the positive vibes in this community! ✨", "This video just made my week! 🎉", "The creativity here is insane! 🎭", 
     "You're an inspiration! 💪", "Legendary content! 👑"
   ];
-  
+
+  const colors = [
+    "#512da7", "#8c6e62", "#009c9c", "#aa47bc", "#00579c", 
+    "#2196F3", "#03A9F4", "#00BCD4", "#009688", "#4CAF50", 
+    "#8BC34A", "#CDDC39", "#FFEB3B", "#FFC107", "#FF9800", 
+    "#FF5722", "#795548", "#D32F2F", "#C2185B", "#7B1FA2", 
+    "#512DA8", "#303F9F", "#1976D2", "#0288D1", "#0097A7", 
+    "#00796B", "#388E3C", "#689F38", "#AFB42B", "#FBC02D", 
+    "#FFA000", "#F57C00", "#E64A19", "#5D4037", "#C62828", 
+    "#AD1457", "#6A1B9A", "#4527A0", "#283593", "#1565C0", 
+    "#0277BD", "#00838F", "#00695C", "#2E7D32", "#558B2F", 
+    "#9E9D24", "#F9A825", "#FF8F00", "#EF6C00", "#D84315"
+  ];
+
   export function generateRandomName() {
     return names[Math.floor(Math.random() * names.length)];
   }  
 
   export function generateRandomMessage(){
     return messages[Math.floor(Math.random() * messages.length)];
+  }
+
+  export function generateRandomColor(){
+    return colors[Math.floor(Math.random() * colors.length)]
   }
   
