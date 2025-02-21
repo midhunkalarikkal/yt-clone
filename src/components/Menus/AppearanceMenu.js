@@ -12,14 +12,16 @@ const AppearanceMenu = () => {
   const handleAppearanceMenu = () => {
     dispatch(appearanceMenuClose());
     dispatch(toggleUserSideMenu());
-};
-
-const handleDarkTheme = () => {
-      dispatch(makeDarkTheme());
-    };
-    
-    const handleLightTheme = () => {
-        dispatch(makeLightTheme());
+  };
+  
+  const handleDarkTheme = () => {
+    dispatch(makeDarkTheme());
+    dispatch(appearanceMenuClose());
+  };
+  
+  const handleLightTheme = () => {
+    dispatch(makeLightTheme());
+    dispatch(appearanceMenuClose());
   };
 
   return (

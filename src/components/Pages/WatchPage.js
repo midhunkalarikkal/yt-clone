@@ -24,6 +24,7 @@ const WatchPage = () => {
   const [videoTitle, setVideoTitle] = useState(null);
   const themeMode = useSelector((store) => store.state.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
+  const sideMenuOpen = useSelector((store) => store.state.isSidebarOpen);
 
   const videoId = searchParams.get("v");
   const channelId = searchParams.get("ch");
@@ -63,7 +64,7 @@ const WatchPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row px-1 md:px-6 mt-14 md:pt-4 w-full">
+    <div className={`flex flex-col lg:flex-row px-1 md:px-6 mt-14 md:pt-4 ${sideMenuOpen ? `md:w-[86%] md:ml-[14%]` : `w-full`}`}>
       <div className="w-full lg:w-[73%] overflow-hidden">
         <div>
           <iframe

@@ -72,6 +72,10 @@ const Header = () => {
     setSearchOpen(!searchOpen);
   };
 
+  const goToHome = () => {
+    
+  }
+
   useEffect(() => {
     if (!searchQuery.trim()) return;
     const timer = setTimeout(() => {
@@ -156,18 +160,18 @@ const Header = () => {
             className="cursor-pointer"
             onClick={handleSideBar}
             style={{ color: theme.textOne }}
-          />
-          <img
-            className="w-6 ml-2 md:w-8 md:ml-6 cursor-pointer"
-            src="/icons/ytlogo.png"
-            alt="ytlogo"
-          />
-          <h1
-            className={`text-xl md:text-2xl font-bold cursor-pointer`}
-            style={{ color: theme.textOne }}
-          >
-            Youtube<sup className="text-xs font-normal opacity-60">IN</sup>
-          </h1>
+          />   
+            <img
+              className="w-6 ml-2 md:w-8 md:ml-6 cursor-pointer"
+              src="/icons/ytlogo.png"
+              alt="ytlogo"
+              />
+            <h1
+              className={`text-xl md:text-2xl font-bold cursor-pointer`}
+              style={{ color: theme.textOne }}
+              >
+              Youtube<sup className="text-xs font-normal opacity-60">IN</sup>
+            </h1>
         </div>
       )}
 
