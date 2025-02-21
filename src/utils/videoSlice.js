@@ -28,7 +28,7 @@ const videoSlice = createSlice({
       );
 
       if (existingCommentsIndex !== -1) {
-        state.comments[existingCommentsIndex] = { videoId, comments: items }; // Update them
+        state.comments[existingCommentsIndex] = { videoId, comments: items };
       } else {
         state.comments.push({ videoId, comments: items });
       }
