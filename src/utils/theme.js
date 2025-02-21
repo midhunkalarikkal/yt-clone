@@ -21,7 +21,8 @@ export const lightTheme = {
     replyButtonBgHover: "#def1ff",
     border: "#f0f0f0", // light blue
     sideMenuBg: "#ffffff",
-    sideMenuHover: "#f2f2f2"
+    sideMenuHover: "#f2f2f2",
+    chatName: "#6b6b6b",
 }
 
 export const darkTheme = {
@@ -48,5 +49,6 @@ export const darkTheme = {
     replyButtonBgHover: "#263850",
     border: "#3f3f3f",
     sideMenuBg: "#282828",
-    sideMenuHover: "#3e3e3e"
+    sideMenuHover: "#3e3e3e",
+    chatName: "#b7b7b7"
 }

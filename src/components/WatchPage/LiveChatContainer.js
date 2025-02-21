@@ -23,7 +23,7 @@ const LiveChatContainer = () => {
             </span>
         </div>
         <div className="flex-grow">
-            <ChatMessage name={"Midhun K Paniker"} message={"Message ,,,,,,,mmmmmmmmmmmmmmnhbgvfrdutyg jergusvn begyyb"}/>
+            <ChatMessage name={"Midhun K Paniker"} message={"Hi hello how are you this is from "}/>
         </div>
         <div className="flex border-t p-3 justify-between" style={{ borderColor: theme.descriptionBg }}>
             <div className="flex justify-between rounded-3xl w-[85%] py-2 px-3" style={{ backgroundColor : theme.descriptionBg }}>

@@ -1,62 +1,66 @@
 .custom-list-item {
-    @apply my-1 px-4 py-2 flex items-center justify-start  rounded-xl cursor-pointer;
+  @apply my-1 px-4 py-2 flex items-center justify-start  rounded-xl cursor-pointer;
+}
+
+.custom-list-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.custom-smallList-item:hover {
+  background-color: var(--hover-bg);
+}
+
+.custom-replybutton:hover {
+  background-color: var(--hover-bg);
+}
+
+.custom-searchSuggestion-bg:hover {
+  background-color: var(--hover-bg);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100%;
   }
-
-  .custom-list-item:hover {
-    background-color: var(--hover-bg);
+  100% {
+    background-position: 100%;
   }
+}
 
-  .custom-smallList-item:hover {
-    background-color: var(--hover-bg);
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes breathing {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
   }
-  
-  .custom-replybutton:hover {
-    background-color: var(--hover-bg);
+  50% {
+    opacity: 0.9;
+    transform: scale(1.02);
   }
-
-  .custom-searchSuggestion-bg:hover {
-    background-color :  var(--hover-bg);
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
   }
+}
 
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-
-    @keyframes shimmer {
-      0% {
-        background-position: -100%;
-      }
-      100% {
-        background-position: 100%;
-      }
-    }
-    
-    .shimmer {
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    
-    @keyframes breathing {
-      0% {
-        opacity: 0.8;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.9;
-        transform: scale(1.02);
-      }
-      100% {
-        opacity: 0.8;
-        transform: scale(1);
-      }
-    }
-    
-    .animate-pulse {
-      animation: breathing 1.6s ease-in-out infinite;
-    }
+.animate-pulse {
+  animation: breathing 1.6s ease-in-out infinite;
+}
