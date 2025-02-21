@@ -19,7 +19,7 @@ const ChatMessage = ({ name, message }) => {
         alt="profile_image"
       />
       <div className="flex mt-1 mx-2">
-        <p>
+        <p className="flex-1">
           <span className="font-medium" style={{ color: theme.chatName }}>
             {name}
           </span>{" "}
@@ -27,10 +27,10 @@ const ChatMessage = ({ name, message }) => {
             {message}
           </span>
         </p>
-        <span>
-          <MoreVertOutlinedIcon />
-        </span>
       </div>
+      <span className="ml-auto mt-1">
+        <MoreVertOutlinedIcon />
+      </span>
     </div>
   );
 };

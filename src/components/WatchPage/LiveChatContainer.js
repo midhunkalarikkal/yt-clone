@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatMessage from "./ChatMessage";
 import { addMessage } from "../../utils/chatSlice";
+import { generateRandomMessage, generateRandomName } from "../../utils/helper";
 
 const LiveChatContainer = () => {
 
@@ -20,12 +21,12 @@ const LiveChatContainer = () => {
 
     useEffect(() => {
         const i = setInterval(() => {
-            console.log("Message");
+            
             dispatch(addMessage({
-                name: "Midhun K Paniker",
-                message: "New message"
+                name: generateRandomName(),
+                message: generateRandomMessage()
             }));
-        },2000)
+        },1000)
         return () =>  clearInterval(i)
     },[])
 
@@ -38,11 +39,10 @@ const LiveChatContainer = () => {
             <ClearIcon  className=""/>
             </span>
         </div>
-        <div className="flex-grow">
+        <div className="flex h-full overflow-y-scroll flex-col-reverse">
             {messages.length > 0 && messages.map((chat, index) => 
             <ChatMessage key={index} name={chat.name} message={chat.message}/>
         )}
-        {/* <ChatMessage name={"Midhun K Paniker"} message={"Hi my name is Midhun K Paniker"}/> */}
         </div>
         <div className="flex border-t p-3 justify-between" style={{ borderColor: theme.descriptionBg }}>
             <div className="flex justify-between rounded-3xl w-[85%] py-2 px-3" style={{ backgroundColor : theme.descriptionBg }}>
