@@ -4,7 +4,7 @@ import { darkTheme, lightTheme } from "../../utils/theme";
 import { DEFAULT_PROFILE_IMG } from "../../utils/constants";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 
-const ChatMessage = ({ data }) => {
+const ChatMessage = React.memo(({ data }) => {
   const { profileImage, bgColor, name, message } = data;
   const themeMode = useSelector((store) => store.state?.isDarkTheme);
   const theme = themeMode === false ? lightTheme : darkTheme;
@@ -54,6 +54,6 @@ const ChatMessage = ({ data }) => {
       </span>
     </div>
   );
-};
+});
 
 export default ChatMessage;
