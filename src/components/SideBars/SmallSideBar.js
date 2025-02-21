@@ -20,20 +20,20 @@ const SmallSideBar = () => {
         <div>
           <ul style={{ color: theme.menuText }}>
             <Link to={"/"}>
-              <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-smallList-item" style={{ "--hover-bg": theme.menuHover}}>
+              <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-hover" style={{ "--hover-bg": theme.menuHover}}>
                 <HomeIcon fontSize="medium" />
                 <span className="text-xs">Home</span>
               </li>
             </Link>
-            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-smallList-item" style={{ "--hover-bg": theme.menuHover}}>
+            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-hover" style={{ "--hover-bg": theme.menuHover}}>
               <VideoStableOutlinedIcon fontSize="medium" />{" "}
               <span className="text-xs">Shorts</span>
             </li>
-            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-smallList-item" style={{ "--hover-bg": theme.menuHover}}>
+            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-hover" style={{ "--hover-bg": theme.menuHover}}>
               <SubscriptionsOutlinedIcon fontSize="medium" />
               <span className="text-xs">Subscriptions</span>
             </li>
-            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-smallList-item" style={{ "--hover-bg": theme.menuHover}}>
+            <li className="flex flex-col items-center mt-2 cursor-pointer p-2 rounded-lg custom-hover" style={{ "--hover-bg": theme.menuHover}}>
               <AccountCircleOutlinedIcon fontSize="medium" />
               <span className="text-xs">You</span>
             </li>

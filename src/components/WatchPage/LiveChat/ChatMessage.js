@@ -20,7 +20,7 @@ const ChatMessage = React.memo(({ data }) => {
 
   return (
     <div
-      className="flex items-start py-1 px-4 cursor-pointer custom-searchSuggestion-bg"
+      className="flex items-start py-1 px-4 cursor-pointer custom-hover"
       style={{ "--hover-bg": theme.descriptionBg }}
       onMouseEnter={showButton}
       onMouseLeave={hideButton}

@@ -145,7 +145,7 @@ const Header = () => {
 
   return (
     <div
-      className="flex w-full h-14 py-4 px-4 fixed top-0"
+      className="flex w-full h-14 py-4 px-4 fixed top-0 z-50"
       style={{ backgroundColor: theme.mainBg }}
     >
       {!searchOpen && (
@@ -258,7 +258,7 @@ const Header = () => {
               {suggestions.map((item) => (
                 <li
                   key={item}
-                  className="p-1 cursor-default custom-searchSuggestion-bg"
+                  className="p-1 cursor-default custom-hover"
                   style={{
                     "--hover-bg": theme.menuHover
                   }}

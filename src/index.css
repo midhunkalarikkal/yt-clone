@@ -1,26 +1,28 @@
-.custom-list-item {
+.custom-hover {
   @apply my-1 px-4 py-2 flex items-center justify-start  rounded-xl cursor-pointer;
 }
 
-.custom-list-item:hover {
+.custom-hover:hover {
   background-color: var(--hover-bg);
 }
 
-.custom-smallList-item:hover {
-  background-color: var(--hover-bg);
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
 }
 
-.custom-replybutton:hover {
-  background-color: var(--hover-bg);
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
 }
 
-.custom-searchSuggestion-bg:hover {
-  background-color: var(--hover-bg);
+.scrollbar-thin::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track);
 }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -47,7 +47,7 @@ const ChatInputForm = React.memo(({ theme }) => {
       style={{ borderColor: theme.descriptionBg }}
     >
       <form onSubmit={submitForm} className="w-full flex justify-between">
-        <div className="relative w-[85%]">
+        <div className="relative w-[85%] ">
           <textarea
             type="text"
             rows="1"

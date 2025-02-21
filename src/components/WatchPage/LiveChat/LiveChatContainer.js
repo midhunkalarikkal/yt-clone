@@ -28,7 +28,7 @@ const LiveChatContainer = () => {
           message: generateRandomMessage(),
         })
       );
-    }, 6000);
+    }, 1000);
     return () => clearInterval(i);
   }, []);
 
@@ -38,7 +38,10 @@ const LiveChatContainer = () => {
       style={{ color: theme.textOne, borderColor: theme.descriptionBg }}
     >
       <ChatTopBar />
-      <div className="flex h-full overflow-y-scroll flex-col-reverse">
+      <div className="flex h-full overflow-y-scroll flex-col-reverse scrollbar-thin scrollbar-thumb-rounded-lg scrollbar-track-rounded-lg" style={{
+        "--scrollbar-thumb": theme.descriptionBg,
+        "--scrollbar-track": theme.subButtonText,
+      }}>
         {messages.length > 0 &&
           messages.map((chat, index) => (
             <ChatMessage key={index} data={chat} />

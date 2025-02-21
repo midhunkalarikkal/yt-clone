@@ -73,7 +73,7 @@ const CommentsContainer = memo(({ videoId, onCommentCountUpdate, onTimeClick }) 
             {comment?.replies?.comments && (
               <div className="px-4 py-2">
                 <button
-                  className="text-[#065fd4] font-semibold cursor-pointer px-4 py-1 rounded-full custom-replybutton"
+                  className="text-[#065fd4] font-semibold cursor-pointer px-4 py-1 rounded-full custom-hover"
                   style={{ "--hover-bg": theme.replyButtonBgHover }}
                   onClick={showCommentReply}
                 >
