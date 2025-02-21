@@ -8,6 +8,7 @@ const videoSlice = createSlice({
     items: null,
     channelData: [],
     comments: [],
+    searchedItems: null
   },
   reducers: {
     addPopularVideos: (state, action) => {
@@ -33,16 +34,23 @@ const videoSlice = createSlice({
         state.comments.push({ videoId, comments: items });
       }
     },
+    addSearchedItems: (state, action) => {
+      state.searchedItems = action.payload;
+    },
+    removeSearchedItems: (state,action) => {
+      state.searchedItems = null
+    }
   },
 });
 
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["searchedItems"],
 };
 
 const persistedReducer = persistReducer(persistConfig, videoSlice.reducer);
 
-export const { addPopularVideos, addChannelData, addComments } =
+export const { addPopularVideos, addChannelData, addComments, addSearchedItems, removeSearchedItems } =
   videoSlice.actions;
 export default persistedReducer;

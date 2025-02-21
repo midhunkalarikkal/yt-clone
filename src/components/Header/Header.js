@@ -21,18 +21,23 @@ import {
 } from "../../utils/constants";
 import {
   appearanceMenuClose,
+  removeSelectedItem,
+  setSelectedItem,
   setUser,
   toggleSidebar,
   toggleUserSideMenu,
   updateUserLoggedIn,
 } from "../../utils/stateSlice";
+import useGetSearchResult from "../../utils/hooks/useGetSearchResult";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [hoveredItem, setHoveredItem] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [signInLoading, setSignInLoading] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  useGetSearchResult();
 
   const searchCache = useSelector((store) => store.search);
   const userLoggedIn = useSelector((store) => store.state?.isUserLoggedIn);
@@ -72,8 +77,20 @@ const Header = () => {
     setSearchOpen(!searchOpen);
   };
 
-  const goToHome = () => {
-    
+  const selectedSearchItem = (event, itemText) => {
+    event.stopPropagation();
+    setHoveredItem(itemText);
+  };
+
+  const handleItemClick = (itemText) => {
+    setSearchQuery(itemText);
+    setHoveredItem(null);
+    setShowSuggestions(false);
+  };
+
+  const updateContent = (hoveredItem) => {
+    console.log("item : ",hoveredItem)
+    dispatch(setSelectedItem(hoveredItem))
   }
 
   useEffect(() => {
@@ -188,8 +205,8 @@ const Header = () => {
             }}
             type="text"
             placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={hoveredItem || searchQuery}
+            onChange={(e) => {setSearchQuery(e.target.value); setHoveredItem(null)}}
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => setShowSuggestions(false)}
           />
@@ -200,6 +217,7 @@ const Header = () => {
                 border: `1px solid ${theme.buttonOneBorder}`,
                 backgroundColor: theme.buttonOneBg,
               }}
+              onClick={() => updateContent(hoveredItem)}
             >
               <SearchIcon style={{ color: theme.textOne }} />
             </button>
@@ -228,8 +246,8 @@ const Header = () => {
         }}
         type="text"
         placeholder="Search"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        value={hoveredItem || searchQuery}
+        onChange={(e) => {setSearchQuery(e.target.value); setHoveredItem(null);}}
         onFocus={() => setShowSuggestions(true)}
         onBlur={() => setShowSuggestions(false)}
         />
@@ -241,6 +259,7 @@ const Header = () => {
           borderBottom: `1px solid ${theme.buttonOneBorder}`,
           backgroundColor: theme.buttonOneBg,
         }}
+        onClick={() => updateContent(hoveredItem)}
         >
           <SearchIcon style={{ color: theme.textOne }} />
         </button>
@@ -257,11 +276,13 @@ const Header = () => {
         )}
         
         {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute top-8 w-full md:w-7/12 md:left-[14%] rounded-lg shadow-lg z-10" style={{ backgroundColor: theme.mainBg, color: theme.textOne, border: `1px solid ${theme.buttonOneBorder}` }}>
+          <div className="absolute top-8 w-full md:w-7/12 md:left-[14%] rounded-lg shadow-lg z-10" style={{ backgroundColor: theme.mainBg, color: theme.textOne, border: `1px solid ${theme.buttonOneBorder}` }} >
             <ul className="py-2 px-4">
               {suggestions.map((item) => (
                 <li
                   key={item}
+                  onMouseEnter={(e) => selectedSearchItem(e,item)}
+                  onClick={() => handleItemClick(item)}
                   className="p-1 cursor-default custom-hover"
                   style={{
                     "--hover-bg": theme.menuHover
@@ -281,14 +302,30 @@ const Header = () => {
             <>
               <VideoCallIcon
                 fontSize="large"
+                sx={{
+                  display: { xs: "none", md: "block" },
+                  color: theme.textOne,
+                }}
                 className="mr-6 cursor-pointer"
-                style={{ color: theme.textOne }}
               />
               <NotificationsNoneIcon
                 fontSize="large"
+                sx={{
+                  display: { xs: "none", md: "block" },
+                  color: theme.textOne,
+                }}
                 className="mr-6 cursor-pointer"
-                style={{ color: theme.textOne }}
               />
+               <button
+                className="px-1 h-8 rounded-full mr-1 block md:hidden"
+                style={{
+                  border: `1px solid ${theme.buttonOneBorder}`,
+                  backgroundColor: theme.buttonOneBg,
+                }}
+                onClick={handleSearchOpen}
+              >
+                <SearchIcon style={{ color: theme.textOne }} />
+              </button>
               <img
                 className="w-8 h-8 cursor-pointer rounded-full"
                 src={user.photoURL || DEFAULT_PROFILE_IMG}

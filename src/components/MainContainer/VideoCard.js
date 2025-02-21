@@ -42,7 +42,7 @@ const VideoCard = memo(({ info }) => {
 
   const { snippet, statistics, id } = info;
   const { channelTitle, publishedAt, title, thumbnails, channelId } = snippet;
-  const { viewCount } = statistics;
+  const viewCount = statistics?.viewCount;
   const thumbnailUrl =
     thumbnails?.maxres?.url ||
     thumbnails?.high?.url ||
@@ -50,7 +50,7 @@ const VideoCard = memo(({ info }) => {
     thumbnails?.default?.url;
   const trimmedTitle = title.length > 55 ? title.slice(0, 55) + "..." : title;
   const date = moment(publishedAt).fromNow();
-  const vc = numeral(viewCount).format("0.0a");
+  const vc = viewCount ? numeral(viewCount).format("0.0a") : null;
 
   return (
     <div className="flex flex-col overflow-hidden cursor-pointer">
@@ -87,14 +87,14 @@ const VideoCard = memo(({ info }) => {
             >
               {channelTitle}{" "}
               <span className="md:hidden">
-                {vc} views • {date}
+                {vc ? vc+" views" : ""} • {date}
               </span>
             </p>
             <p
               className="text-sm font-semibold hidden md:block"
               style={{ color: theme.textTwo }}
             >
-              {vc} views • {date}
+              {vc ? vc+" views" : ""} • {date}
             </p>
           </div>
         </Link>

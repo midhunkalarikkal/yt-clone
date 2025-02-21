@@ -10,6 +10,7 @@ const stateSlice = createSlice({
     isAppearanceMenuOpen: false,
     user: null,
     limitReached: false,
+    selectedItem: null,
     isDarkTheme: JSON.parse(localStorage.getItem("isDarkTheme")) || false,
   },
   reducers: {
@@ -51,6 +52,12 @@ const stateSlice = createSlice({
       state.isDarkTheme = false;
       localStorage.setItem("isDarkTheme", JSON.stringify(false));
     },
+    setSelectedItem: (state, action) => {
+      state.selectedItem = action.payload;
+    },
+    removeSelectedItem: (state,) => {
+      state.selectedItem = null;
+    }
   },
 });
 
@@ -66,6 +73,8 @@ export const {
   appearanceMenuOpen,
   appearanceMenuClose,
   makeDarkTheme,
-  makeLightTheme
+  makeLightTheme,
+  setSelectedItem,
+  removeSelectedItem
 } = stateSlice.actions;
 export default stateSlice.reducer;
