@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
-import DeblurRoundedIcon from "@mui/icons-material/DeblurRounded";
+import { darkTheme, lightTheme } from "../../utils/theme";
 import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
 import DiamondOutlinedIcon from "@mui/icons-material/DiamondOutlined";
 import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
@@ -26,7 +26,6 @@ import SportsEsportsOutlinedIcon from "@mui/icons-material/SportsEsportsOutlined
 import MovieCreationOutlinedIcon from "@mui/icons-material/MovieCreationOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
-import { darkTheme, lightTheme } from "../../utils/theme";
 
 const Sidebar = () => {
 

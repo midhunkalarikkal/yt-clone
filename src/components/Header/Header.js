@@ -1,12 +1,12 @@
 import { toast } from "react-toastify";
-import UserSideMenu from "../Menus/UserSideMenu";
 import MicIcon from "@mui/icons-material/Mic";
-import AppearanceMenu from "../Menus/AppearanceMenu";
 import MenuIcon from "@mui/icons-material/Menu";
-import { auth, provider } from "../../utils/firebase";
+import UserSideMenu from "../Menus/UserSideMenu";
 import React, { useEffect, useState } from "react";
-import { cacheResults } from "../../utils/searchSlice";
 import SearchIcon from "@mui/icons-material/Search";
+import AppearanceMenu from "../Menus/AppearanceMenu";
+import { auth, provider } from "../../utils/firebase";
+import { cacheResults } from "../../utils/searchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { darkTheme, lightTheme } from "../../utils/theme";
 import VideoCallIcon from "@mui/icons-material/VideoCall";

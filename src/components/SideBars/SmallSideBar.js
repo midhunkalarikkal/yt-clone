@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import HomeIcon from "@mui/icons-material/Home";
+import { darkTheme, lightTheme } from "../../utils/theme";
 import VideoStableOutlinedIcon from "@mui/icons-material/VideoStableOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { darkTheme, lightTheme } from "../../utils/theme";
 
 const SmallSideBar = () => {
   const isSmallSidebarOpen = useSelector(

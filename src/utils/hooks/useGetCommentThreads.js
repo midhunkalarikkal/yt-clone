@@ -12,7 +12,6 @@ const useGetCommentThreads = (videoId) => {
         const data = await fetch(
           VIDEO_COMMENT_THRES_API + videoId + "&key=" + GAK
         );
-        console.log("data : ",data);
         const json = await data.json();
         setComments(json.items);
       } catch (error) {

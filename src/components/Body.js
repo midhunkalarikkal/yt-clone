@@ -1,12 +1,12 @@
 import React from "react";
+import ErrorPage from "./ErrorPage";
 import Sidebar from "./SideBars/Sidebar";
 import { Outlet } from "react-router-dom";
-import SmallSideBar from "./SideBars/SmallSideBar";
-import useGetPopularVideos from "../utils/hooks/useGetPopularVideos";
 import { useSelector } from "react-redux";
-import ErrorPage from "./ErrorPage";
-import { darkTheme, lightTheme } from "../utils/theme";
 import { ToastContainer } from "react-toastify";
+import SmallSideBar from "./SideBars/SmallSideBar";
+import { darkTheme, lightTheme } from "../utils/theme";
+import useGetPopularVideos from "../utils/hooks/useGetPopularVideos";
 
 const Body = () => {
   const limitReached = useSelector((store) => store.state.limitReached);

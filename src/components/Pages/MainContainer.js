@@ -1,8 +1,8 @@
-import ButtonList from '../MainContainer/ButtonList';
 import React, { useEffect } from 'react';
-import VideosContainer from '../MainContainer/VideosContainer';
+import ButtonList from '../MainContainer/ButtonList';
 import { useDispatch, useSelector } from 'react-redux';
 import { openSmallSidebar } from '../../utils/stateSlice';
+import VideosContainer from '../MainContainer/VideosContainer';
 
 const MainContainer = () => {
   const dispatch = useDispatch()

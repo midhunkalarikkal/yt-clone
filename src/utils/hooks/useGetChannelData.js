@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { CHANNEL_DETAILS_API, GAK } from '../constants';
 import { useDispatch } from 'react-redux';
 import { addChannelData } from '../videoSlice';
+import { CHANNEL_DETAILS_API, GAK } from '../constants';
 
 const useGetChannelData = (channelId) => {
     const dispatch = useDispatch();
