@@ -7,13 +7,10 @@ import { YT_SEARCH_API_END, YT_SEARCH_API_START } from "../constants";
 const useGetSearchResult = () => {
   const dispatch = useDispatch();
   const searchQuery = useSelector((store) => store.state?.selectedItem)
-  console.log("useGetSearchResult")
-  console.log("searchQuery : ",searchQuery)
 
   useEffect(() => {
     if(searchQuery === null) return;
     const getSearchResults = async () => {
-        console.log("Searing API start")
       try {
         const data = await fetch(
           `${YT_SEARCH_API_START}${encodeURIComponent(searchQuery)}${YT_SEARCH_API_END}${process.env.REACT_APP_GOOGLE_API_KEY2}`
@@ -22,7 +19,6 @@ const useGetSearchResult = () => {
             if (json.error?.errors?.some((err) => err.reason === "quotaExceeded")) {
           dispatch(setYoutubeLimitReached(true));
         } else {
-            console.log("dispatching searched api result")
           dispatch(setYoutubeLimitReached(false));
           dispatch(addSearchedItems(json.items));
         }

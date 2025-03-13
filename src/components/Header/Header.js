@@ -54,7 +54,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const getSearchResults = async () => {
-    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
+    const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API+searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
     dispatch(
@@ -89,9 +89,11 @@ const Header = () => {
   };
 
   const updateContent = (hoveredItem) => {
-    console.log("item : ",hoveredItem)
+    toast.info("Currently on update.");
+    return;
     dispatch(setSelectedItem(hoveredItem))
   }
+
 
   useEffect(() => {
     if (!searchQuery.trim()) return;

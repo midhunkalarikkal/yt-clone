@@ -28,7 +28,7 @@ const LiveChatContainer = () => {
           message: generateRandomMessage(),
         })
       );
-    }, 1000);
+    }, 10000);
     return () => clearInterval(i);
   }, []);
 
